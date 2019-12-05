@@ -1,6 +1,6 @@
 # AWS Fargate & Elastic Container Service - Masterclass
 
-## Docker Images 
+## List of Docker Images used in this course
 | Application Name                 | Docker Image Name                          |
 | ------------------------------- | --------------------------------------------- |
 | Customized Nginx  | stacksimplify/mynginx_image1 |
