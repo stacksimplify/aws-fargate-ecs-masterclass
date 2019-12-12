@@ -17,9 +17,6 @@
 
 ## Step-3: Create ECR Repository
 - Create simple ECR repo via AWS Console.
-- Discuss about features like
-   - Image Immutability
-   - Image Scan
 
 ## Step-4: Create Docker Image locally
 - Create docker image locally
