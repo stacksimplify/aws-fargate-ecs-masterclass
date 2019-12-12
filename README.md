@@ -6,7 +6,7 @@
 | Customized Nginx  | stacksimplify/mynginx_image1 |
 | Simple SpringBoot HelloWorld | stacksimplify/dockerintro-springboot-helloworld-rest-api:1.0.0-RELEASE |
 | Full Stack backend - SpringBoot REST Api with MySQL| stacksimplify/aws-usermgmt-restapi-mysql:tagname:1.0.0 |
-| ReactJS - Full Stack Frontend | stacksimplify/usermgmt-frontend:1.0.0 |
+| Full Stack Frontend - ReactJs  | stacksimplify/usermgmt-frontend:1.0.0 |
 
 
 
