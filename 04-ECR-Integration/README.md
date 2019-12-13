@@ -95,8 +95,6 @@ aws ecr describe-images --repository-name aws-ecr-nginx
 - Core Item-2 is Match Criteria 
    - Since Image Pushed
    - Image Count more than 
-- Important Note-1: 
-- Important Note-2: 
 
 ## Step-10: Using Amazon ECR Images with Amazon ECS
 - Create Task Definition: aws-ecr-nginx
