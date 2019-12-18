@@ -12,9 +12,15 @@
 - Create ECS EC2 Linux Cluster
 ![ECS Cluster Types](/otherfiles/images/01-ECS-Cluster-Types.png)
 
+## Step-02: Cluster Features
+
+
 ## Step-02: Task Definition
 - Task Defintion - Introduction
 - Create a simple Task Definition
+    - Image: stacksimplify/dockerintro-springboot-helloworld-rest-api:1.0.0-RELEASE
+
+![ECS Task Defintion Parameter List](/otherfiles/images/01-ECS-Cluster-Types.png | width=100)
 
 ## Step-03: Service
 
