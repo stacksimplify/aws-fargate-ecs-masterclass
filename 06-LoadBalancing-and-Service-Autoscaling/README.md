@@ -13,6 +13,10 @@ docker build -t <replace-with-your-docker-hub-id>/nginxapp1 .
 cd ../Application-2
 docker build -t stacksimplify/nginxapp2 .
 docker build -t <replace-with-your-docker-hub-id>/nginxapp2 .
+
+cd ../Application-3
+docker build -t stacksimplify/nginxapp3 .
+docker build -t <replace-with-your-docker-hub-id>/nginxapp3 .
 ```    
 - **Run** the docker images and test those containers locally  
     - **App1:** http://localhost:81/app1
@@ -20,15 +24,18 @@ docker build -t <replace-with-your-docker-hub-id>/nginxapp2 .
 ```
 docker run --name nginxapp1 -p 81:80 --rm -d stacksimplify/nginxapp1
 docker run --name nginxapp2 -p 82:80 --rm -d stacksimplify/nginxapp2
+docker run --name nginxapp3 -p 83:80 --rm -d stacksimplify/nginxapp3
 
 docker run --name nginxapp1 -p 81:80 --rm -d <replace-with-your-docker-hub-id>/nginxapp1
 docker run --name nginxapp2 -p 82:80 --rm -d <replace-with-your-docker-hub-id>/nginxapp2
+docker run --name nginxapp3 -p 83:80 --rm -d <replace-with-your-docker-hub-id>/nginxapp3
 ```
 - **Stop** the docker containers
 ```
 docker ps
 docker stop nginxapp1
 docker stop nginxapp2
+docker stop nginxapp3
 docker ps -a
 ```    
 - **Push** these two containers to your Docker Hub Repository
@@ -36,9 +43,11 @@ docker ps -a
 docker images
 docker push stacksimplify/nginxapp1
 docker push stacksimplify/nginxapp2
+docker push stacksimplify/nginxapp3
 
 docker push <replace-with-your-docker-hub-id>/nginxapp1
 docker push <replace-with-your-docker-hub-id>/nginxapp2
+docker push <replace-with-your-docker-hub-id>/nginxapp3
 ```
 
 
@@ -88,7 +97,8 @@ docker push <replace-with-your-docker-hub-id>/nginxapp2
 
 ## Service Autoscaling
 
-### Step-1: Update any of the existing service to add Autoscaling Policy
+### Step-1: Autoscaling: Target Tracking Policy
+- Update any of the existing service to add Autoscaling Policy
 - **Service Name:** aws-nginx-app1-svc
     - Minimum Number of Tasks: 1
     - Desired Number of Tasks: 1
@@ -100,7 +110,7 @@ docker push <replace-with-your-docker-hub-id>/nginxapp2
         - Scale-out cooldown period: 60
         - Scale-in cooldown period: 60
 
-### Step-2: Spin up AWS EC2 Instance
+### Step-2: Spin up AWS EC2 Instance, Install and use ApacheBench for generating load
 - AMI ID: Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type - ami-00eb20669e0990cb4
 - Install the **ApacheBench (ab)** utility to make thousands of HTTP requests to your load balancer in a short period of time.
 - **Scale-Out Activity**: Keep adding load till we see alarm in cloudwatch and new tasks (2 more containers) created and registered to load balancer
@@ -111,7 +121,10 @@ ab -n 500000 -c 1000 http://EC2Contai-EcsElast-SMAKV74U23PH-96652279.us-east-1.e
 ab -n 500000 -c 1000 http://<REPLACE-WITH-ALB-URL-IN-YOUR-ENVIRONMENT>/app1/index.html
 ```    
 
-### Step-3: Clean up resources
+### Step-3: Autoscaling - Step Scaling Policy
+ - PENDING for ECS Cluster
+
+### Step-4: Clean up resources
 - Update service to 
     - Remove Autoscaling policy in service and disable autoscaling
     - Make number of tasks to zero
