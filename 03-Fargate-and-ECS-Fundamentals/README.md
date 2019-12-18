@@ -14,14 +14,14 @@
 
 ## Step-02: Cluster Features
 
+<img src="https://github.com/stacksimplify/aws-fargate-ecs-masterclass/blob/master/otherfiles/images/03-ECS-Cluster-Features.png" width="1600" height="500">
 
 ## Step-02: Task Definition
 - Task Defintion - Introduction
-<img src="https://github.com/stacksimplify/aws-fargate-ecs-masterclass/blob/master/otherfiles/images/02-ECS-TaskDefintion-ParameterList.png" width="2000" height="600">
+<img src="https://github.com/stacksimplify/aws-fargate-ecs-masterclass/blob/master/otherfiles/images/02-ECS-TaskDefintion-ParameterList.png" width="2000" height="500">
 
 - Create a simple Task Definition
     - Image: stacksimplify/nginxapp1:latest
-
 
 ## Step-03: Service
 
