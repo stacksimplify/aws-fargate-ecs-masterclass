@@ -20,7 +20,7 @@
 - Create a simple Task Definition
     - Image: stacksimplify/dockerintro-springboot-helloworld-rest-api:1.0.0-RELEASE
 
-<img src="https://github.com/stacksimplify/aws-fargate-ecs-masterclass/blob/master/otherfiles/images/02-ECS-TaskDefintion-ParameterList.png" width="2000" height="1000">
+<img src="https://github.com/stacksimplify/aws-fargate-ecs-masterclass/blob/master/otherfiles/images/02-ECS-TaskDefintion-ParameterList.png" width="2000" height="600">
 
 
 ## Step-03: Service
