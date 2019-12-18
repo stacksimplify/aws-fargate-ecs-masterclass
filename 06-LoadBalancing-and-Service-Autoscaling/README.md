@@ -1,6 +1,7 @@
-# Load Balancing and Service Autoscaling
+# Fargate or ECS Tasks Load Balancing & Service Autoscaling
 
-## Step-1: Pre-requisite - Create Docker Images required
+## Load Balancing
+### Step-1: Pre-requisite - Create Docker Images required
 - **Build** two container images with their context paths as /app1 and /app2.
     - nginxapp1 - /app1
     - nginxapp2 - /app2
@@ -41,7 +42,7 @@ docker push <replace-with-your-docker-hub-id>/nginxapp2
 ```
 
 
-## Step-2: Create Application Load Balancer
+### Step-2: Create Application Load Balancer
 - Create Application Load Balancer
     - Name: aws-ecs-nginx-lb
     - IP Address Type
@@ -51,11 +52,11 @@ docker push <replace-with-your-docker-hub-id>/nginxapp2
     - Target Group
     - Register Targets
 
-## Step-3: Create Task Definitions for both App1 and App2
+### Step-3: Create Task Definitions for both App1 and App2
 - App1 Task Definition: aws-nginx-app1
 - App2 Task Definition: aws-nginx-app2
 
-## Step-4: Create ECS Service for Nginx App1
+### Step-4: Create ECS Service for Nginx App1
 - Create Service
     - Service Name: aws-nginx-app1-svc
     - Number of Tasks: 2
@@ -69,7 +70,7 @@ docker push <replace-with-your-docker-hub-id>/nginxapp2
 - Test by accessing Load Balancer URL. 
 
 
-## Step-5: Create ECS Service for Nginx App1 and leverage same load balancer
+### Step-5: Create ECS Service for Nginx App1 and leverage same load balancer
 - We are going to leverage the same load balancer we used for App1 
 - We are going to provide the App2 path pattern as /app2*
 - Create Service
@@ -85,3 +86,35 @@ docker push <replace-with-your-docker-hub-id>/nginxapp2
 - Test by accessing Load Balancer URL. 
 
 
+## Service Autoscaling
+
+### Step-1: Update any of the existing service to add Autoscaling Policy
+- **Service Name:** aws-nginx-app1-svc
+    - Minimum Number of Tasks: 1
+    - Desired Number of Tasks: 1
+    - Maximum Number of Tasks: 3
+    - Scaling Policy: Target Tracking
+        - Policy Name: RequestCountPolicy
+        - ECS Service Metric: ALBRequestCountPolicy
+        - Target Value: 1000
+        - Scale-out cooldown period: 60
+        - Scale-in cooldown period: 60
+
+### Step-2: Spin up AWS EC2 Instance
+- AMI ID: Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type - ami-00eb20669e0990cb4
+- Install the **ApacheBench (ab)** utility to make thousands of HTTP requests to your load balancer in a short period of time.
+- **Scale-Out Activity**: Keep adding load till we see alarm in cloudwatch and new tasks (2 more containers) created and registered to load balancer
+- **Scale-In Activity**: Stop the load now and wait for 5 to 10 minutes and 
+```
+sudo yum install -y httpd24-tools
+ab -n 500000 -c 1000 http://EC2Contai-EcsElast-SMAKV74U23PH-96652279.us-east-1.elb.amazonaws.com/app1/index.html
+ab -n 500000 -c 1000 http://<REPLACE-WITH-ALB-URL-IN-YOUR-ENVIRONMENT>/app1/index.html
+```    
+
+### Step-3: Clean up resources
+- Update service to 
+    - Remove Autoscaling policy in service and disable autoscaling
+    - Make number of tasks to zero
+    - wait for 5 to 10 minutes and verify and ensure zero tasks (containers) running.
+    - This way we dont end-up in accidental increase of our AWS bill during our learning process. 
+- Delete Load Balancer (ALB) if we are not using it. 
