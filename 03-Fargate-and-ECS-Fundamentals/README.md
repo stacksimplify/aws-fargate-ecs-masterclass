@@ -19,11 +19,10 @@
 
 ## Step-04: Task Definition
 - Task Defintion - Introduction
-**Task Definition Parameter List**
 <img src="https://github.com/stacksimplify/aws-fargate-ecs-masterclass/blob/master/otherfiles/images/02-ECS-TaskDefintion-ParameterList.png" width="2000" height="500">
 
 - Create a simple Task Definition
-    - Task Definition: nginx-app1-td        
+    - **Task Definition:** nginx-app1-td        
     - **Docker Image:** stacksimplify/nginxapp1:latest
 
 ## Step-05: Service
