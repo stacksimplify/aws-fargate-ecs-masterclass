@@ -11,6 +11,9 @@
 
 
 ## Other References
+### Fullstack Docker
 - **Important**: https://levelup.gitconnected.com/handling-multiple-environments-in-react-with-docker-543762989783
 - https://blog.codecentric.de/en/2018/12/react-application-container-environment-aware-kubernetes-deployment/
-- as
+
+### CloudFormation References
+- **Fargate CFN**: https://github.com/nathanpeck/aws-cloudformation-fargate
