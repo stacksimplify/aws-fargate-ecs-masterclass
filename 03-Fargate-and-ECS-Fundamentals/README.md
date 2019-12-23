@@ -48,7 +48,6 @@
     - Cluster
     - Service
     - Task Definition
-    - Container Definition
     - Task
 - As we go to next steps in our course, these are the words we are going to use very frequently. 
 ![ECS Objects](/otherfiles/images/04-ECS-Objects.png)
