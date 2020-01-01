@@ -1,6 +1,6 @@
 # Microservices Deployment on AWS Fargate & ECS Clusters
 
-# Module - 1: Introduction
+# Module - 1: Introduction & Pre-requisites
 ## What are we going to learn in this section?
 - Step-1: 
 - Step-2: 
@@ -74,7 +74,7 @@ AWS_MAIL_SERVER_FROM_ADDRESS= can-be-anything@gmail.com
         - Alias Name: microservices-alb url
 
 # Module - 2: Deploy Notification Service
-## Notification Microservice - Create Task Definition
+## Step-1: Notification Microservice - Create Task Definition
 - Configure Task Definition
     - Task Definition Name: notification-microservice
     - Task Role: ecsTaskExecutionRole
@@ -92,7 +92,7 @@ AWS_MAIL_SERVER_FROM_ADDRESS= can-be-anything@gmail.com
         - AWS_MAIL_SERVER_PASSWORD
         - AWS_MAIL_SERVER_FROM_ADDRESS
 
-## Notification Microservice - Create Service
+## Step-2: Notification Microservice - Create Service
 - Configure Service
     - Launch Type: Fargate
     - Task Definition:
@@ -117,7 +117,7 @@ AWS_MAIL_SERVER_FROM_ADDRESS= can-be-anything@gmail.com
         - Health Check path: /notification/health-status
 - **Important Note:** Disable Service Discovery for now
 
-## Notification Microservice - Verify the deployment and access the service. 
+## Step-3: Notification Microservice - Verify the deployment and access the service. 
 - Verify tasks are in **RUNNING** state in Service
 - Verify ALB - Target Groups section, Registered Tagets status to confirm if health checks are succeeding. If healthy, you shoud see
     - Status: Healthy
@@ -131,7 +131,7 @@ http://services.stacksimplify.com/notification/health-status
 
 
 # Module - 3: Deploy User Management Service
-## User Management Service - Create Task Definition
+## Step-1: User Management Service - Create Task Definition
 - Configure Task Definition
     - Task Definition Name: usermgmt-microservice
     - Task Role: ecsTaskExecutionRole
@@ -152,7 +152,7 @@ http://services.stacksimplify.com/notification/health-status
         - NOTIFICATION_SERVICE_HOST=services.stacksimplify.com [or] ALB DNS Name
         - NOTIFICATION_SERVICE_PORT=80
 
-## User Management Service - Create Service
+## Step-2: User Management Service - Create Service
 - Configure Service
     - Launch Type: Fargate
     - Task Definition:
@@ -178,7 +178,7 @@ http://services.stacksimplify.com/notification/health-status
 - **Important Note:** Disable Service Discovery for now
 
 
-## User Management Microservice - Verify the deployment and access the service. 
+## Step-3: User Management Microservice - Verify the deployment and access the service. 
 - Verify tasks are in **RUNNING** state in Service
 - Verify ALB - Target Groups section, Registered Tagets status to confirm if health checks are succeeding. If healthy, you shoud see
     - Status: Healthy
@@ -189,9 +189,12 @@ http://services.stacksimplify.com/notification/health-status
 ```
 http://services.stacksimplify.com/usermgmt/health-status
 ```
-
-## Test both Microservices using Postman
+# Module - 4: Test both Microservices using Postman
+## Step-1: Import postman project to Postman client on our desktop. 
 - Import postman project
-- Add Environment URL or update environment url
+- Add environment url 
+    - http://services.stacksimplify.com
+
+## Step-2: Test both Microservices using Postman
 - Test **Create User service** and verify the email id to confirm account creation email received.
 - Test **Send Notification service** and verify the email id to confirm test email received. 
