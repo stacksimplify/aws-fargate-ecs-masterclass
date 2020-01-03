@@ -6,7 +6,7 @@
 
 ## Step-02: Pre-requisite
 - Ensure we have a VPC in our region where we are creating the Fargate or ECS clusters.
-- **VPC Name**
+- **VPC**
     - Name: ecs-vpc
     - IPV4 CIDR Block: 10.0.0.0/16
 - **Subnets**
