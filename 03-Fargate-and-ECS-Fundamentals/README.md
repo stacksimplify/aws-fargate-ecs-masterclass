@@ -32,7 +32,7 @@
 ### Step-03-02: Create ECS EC2 Linux Cluster
 - **Pre-requisite**: Create a keypair (ecs-mumbai)
 - **Clutser Settings**
-    - **Cluster Name:** ecs-demo
+    - Cluster Name: ecs-demo
     - Provisioning Model: On-Demand
     - EC2 Instance Type: t2.small
     - Number of Instances: 1
