@@ -11,3 +11,5 @@
 - Follow the navigation
 - Capture Public IP from task and acces it.
 
+## Step-3: Tips to save unlimited ECS costs during learning
+- Always ensure number of running tasks in a cluster is zero when we completed our learning for that day. 
