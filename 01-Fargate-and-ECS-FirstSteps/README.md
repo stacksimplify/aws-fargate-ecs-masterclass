@@ -9,3 +9,5 @@
 - Click on **Amazon ECS --> Clusters**
 - Click on **Get Started**
 - Follow the navigation
+- Capture Public IP from task and acces it.
+
