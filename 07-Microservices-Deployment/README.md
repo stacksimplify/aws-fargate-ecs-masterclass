@@ -55,10 +55,15 @@ AWS_MAIL_SERVER_PASSWORD=
 AWS_MAIL_SERVER_FROM_ADDRESS= can-be-anything@gmail.com
 ```
 
-### Verfiy Email Addresses to which notifications we need to send. 
+### Verfiy Email Addresses to which notifications we need to send.
+- We need two email addresses for testing Notification Service.  
 -  Email Addresses
     - Verify a New Email Address
     - Email Address Verification Request will be sent to that address, click on link to verify your email. 
+    - From Address: stacksimplify@gmail.com (replace with your ids during verification)
+    - To Address: dkalyanreddy@gmail.com (replace with your ids during verification)
+- **Important Note:** We need to ensure all the emails (FromAddress email) and (ToAddress emails) to be verified here. 
+    - Reference Link: https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html    
 
 ## Step-3: Pre-requisite-3: Create Application Load Balancer & DNS Register it in Route53
 - Create Application Load Balancer
