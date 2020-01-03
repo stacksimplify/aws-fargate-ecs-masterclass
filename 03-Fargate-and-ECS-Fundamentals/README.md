@@ -22,9 +22,27 @@
     - Fargate Cluster (Serverless)
     - ECS EC2 - Linux Cluster
     - ECS EC2 - Windows Cluster
-- Create Fargate Cluster
-- Create ECS EC2 Linux Cluster
-![ECS Cluster Types](/otherfiles/images/01-ECS-Cluster-Types.png)
+![ECS Cluster Types](/otherfiles/images/01-ECS-Cluster-Types.png)    
+
+### Step-03-01: Create Fargate Cluster
+- Cluster Name: fargate-demo
+- CloudWatch Container Insights: Enabled
+
+### Step-03-02: Create ECS EC2 Linux Cluster
+- **Pre-requisite**: Create a keypair (ecs-mumbai)
+- **Clutser Settings**
+    - Cluster Name: ecs-demo
+    - Provisioning Model: On-Demand
+    - EC2 Instance Type: t2.small
+    - Number of Instances: 1
+    - EC2 Ami Id: leave defaults
+    - EBS storage (GiB): leave defaults
+    - Keypair: ecs-mumbai
+    - Networking: Select existing VPC and Subnets from ecs-vpc
+    - Security group: leave default
+    - Container instance IAM role: leave default
+    - CloudWatch Container Insights: enabled
+
 
 ## Step-04: Cluster Features
 
