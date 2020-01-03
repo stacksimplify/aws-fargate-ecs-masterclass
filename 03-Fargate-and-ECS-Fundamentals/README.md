@@ -6,7 +6,16 @@
 
 ## Step-02: Pre-requisite
 - Ensure we have a VPC in our region where we are creating the Fargate or ECS clusters.
-    - VPC Name: fargate-vpc
+- **VPC Name**
+    - Name: ecs-vpc
+    - IPV4 CIDR Block: 10.0.0.0/16
+- **Subnets**
+    - Name: ecs-public-1a, CIDR Block: 10.0.10.0/24
+    - Name: ecs-public-1b, CIDR Block: 10.0.20.0/24
+ - **Internet Gateway**
+    - Name: ecs-vpc-igw
+ - **Route Tables**
+    - Associate public route for main route table.         
 
 ## Step-03: ECS Cluster Types & Create a cluster
 - We have 3 types of clusters
@@ -37,7 +46,7 @@
     - Service Name: nginx-app1-svc
     - Number of Tasks: 1
 - **Configure Network**
-    - VPC: fargate-vpc
+    - VPC: ecs-vpc
     - Subnets: us-east-1a, ust-east-1b (subnets from both regions)
     - Security Group: Inbound Port 80
     - Auto Assign Public IP: Enabled    
