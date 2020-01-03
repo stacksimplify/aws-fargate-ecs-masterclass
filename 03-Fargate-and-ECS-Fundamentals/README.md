@@ -42,12 +42,14 @@
     - Security Group: Inbound Port 80
     - Auto Assign Public IP: Enabled    
     
-## Step-07: Task
+## Step-07: Create Task 
 - Understand more about a Task
-- Create a simple task
+- Create a simple task manually which dont have any association with a service
+    - Create Task
+    - Stop Task
 - Delete a task from Service **nginx-app1-svc** and wait for 5 minutes, task gets automatically recreated. 
 
-## Step-08: ECS Objects
+## Step-08: Revise ECS Objects
 - One more time revise about ECS Objects. 
     - Cluster
     - Service
