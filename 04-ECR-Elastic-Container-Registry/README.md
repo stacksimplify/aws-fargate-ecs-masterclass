@@ -65,5 +65,6 @@ docker push 180789647333.dkr.ecr.ap-south-1.amazonaws.com/aws-ecr-nginx:1.0.0
 
 ## Step-7: Using Amazon ECR Images with Amazon ECS
 - Create Task Definition: aws-ecr-nginx
-- Create Service: aws-ecr-nginx-v1
+   - Container Image: 180789647333.dkr.ecr.ap-south-1.amazonaws.com/aws-ecr-nginx:1.0.0
+- Create Service: aws-ecr-nginx-svc
 - Test it
