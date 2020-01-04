@@ -60,7 +60,7 @@
    - **Task Definition:** nginx-app1-td        
    - **Docker Image:** stacksimplify/nginxapp1:latest (Available on Docker Hub)
 
-## Step-06: Service
+## Step-06: Create Service
 - Create a simple ECS service using the 
 - **Configure Service**
     - Launch Type: Fargate
@@ -92,3 +92,5 @@ http://task-public-ip/app1/index.html
     - Task
 - As we go to next steps in our course, these are the words we are going to use very frequently. 
 ![ECS Objects](/otherfiles/images/04-ECS-Objects.png)
+
+
