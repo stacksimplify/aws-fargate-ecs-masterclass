@@ -4,15 +4,11 @@
 -  For introduction slides refer the [presentation slides](/otherfiles/presentations/AWS-FargateECS-Masterclass-Course.pdf). 
 
 ## Step-2: ECR Terminology
- - Registry: An  ECR registry is provided to each AWS account; we can create image repositories in our registry and store images in them. 
-
-- Repository: An ECR image repository contains our Docker images. 
-
-- Repository policy: We can control access to our repositories and the images within them with repository policies. 
-
-- Authorization token: Our Docker client must authenticate to Amazon ECR registries as an AWS user before it can push and pull images. The AWS CLI get-login command provides us with authentication credentials to pass to Docker. 
-
-- Image: We can push and pull container images to our repositories. We can use these images locally on your development system, or we can use them in Amazon ECS task definitions. 
+ - **Registry:** An  ECR registry is provided to each AWS account; we can create image repositories in our registry and store images in them. 
+- **Repository:** An ECR image repository contains our Docker images. 
+- **Repository policy:** We can control access to our repositories and the images within them with repository policies. 
+- **Authorization token:** Our Docker client must authenticate to Amazon ECR registries as an AWS user before it can push and pull images. The AWS CLI get-login command provides us with authentication credentials to pass to Docker. 
+- **Image:** We can push and pull container images to our repositories. We can use these images locally on your development system, or we can use them in Amazon ECS task definitions. 
 
 ## Step-3: Pre-requisites
 - On AWS Console
