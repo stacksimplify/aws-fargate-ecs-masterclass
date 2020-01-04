@@ -50,6 +50,7 @@ aws ecr create-repository --repository-name aws-ecrcli-nginx --region ap-south-1
 
 ```
 docker build -t 180789647333.dkr.ecr.ap-south-1.amazonaws.com/aws-ecr-nginx:1.0.0 . 
+docker run --name aws-ecr-nginx -p 80:80 --rm -d 180789647333.dkr.ecr.ap-south-1.amazonaws.com/aws-ecr-nginx:1.0.0
 ```
 
 ## Step-6: Push Docker Image to AWS ECR
