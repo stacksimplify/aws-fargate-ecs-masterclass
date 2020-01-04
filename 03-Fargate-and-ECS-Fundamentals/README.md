@@ -69,9 +69,13 @@
     - Number of Tasks: 1
 - **Configure Network**
     - VPC: ecs-vpc
-    - Subnets: us-east-1a, ust-east-1b (subnets from both regions)
-    - Security Group: Inbound Port 80
+    - Subnets: ap-south-1a, ap-south-1b (subnets from both regions)
+    - Security Group: ecs-nginx (Inbound Port 80)
     - Auto Assign Public IP: Enabled    
+- Access the nginx application
+```
+http://task-public-ip/app1/index.html
+```    
     
 ## Step-07: Create Task 
 - Understand more about a Task
