@@ -53,6 +53,7 @@
 
 ### Step-05-01: Task Defintion - Introduction
 <img src="https://github.com/stacksimplify/aws-fargate-ecs-masterclass/blob/master/otherfiles/images/02-ECS-TaskDefintion-ParameterList.png" width="2000" height="500">
+
 -  For introduction slides refer the [presentation slides](/otherfiles/presentations/AWS-FargateECS-Masterclass-Course.pdf). 
 
 ### Step-05-02: Create a simple Task Definition
