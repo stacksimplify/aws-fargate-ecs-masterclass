@@ -11,16 +11,32 @@
 - **Image:** We can push and pull container images to our repositories. We can use these images locally on your development system, or we can use them in Amazon ECS task definitions. 
 
 ## Step-3: Pre-requisites
-- On AWS Console
-   - Create Authorization Token for admin user if not created
-   - Create Account Alias if not created. 
 - Install required CLI on the desktop where we build our docker images.
-   - Install AWS CLI 
-   - Install Docker CLI 
+- **Install AWS CLI**
+   - Documentation Reference: https://aws.amazon.com/cli/
+```
+Mac & Linux
+Requires Python 2.6.5 or higher.
+pip install awscli
+```   
+- **Install Docker CLI** 
+   - Docker Desktop for MAC: https://docs.docker.com/docker-for-mac/install/
+   - Docker Desktop for Windows: https://docs.docker.com/docker-for-windows/install/
+   - Docker on Linux: https://docs.docker.com/install/linux/docker-ce/centos/
+
+- **On AWS Console**
+   - Create Authorization Token for admin user if not created
+   - Configure AWS CLI with Authorization Token
+```
+aws configure
+AWS Access Key ID: ****
+AWS Secret Access Key: ****
+Default Region Name: ap-south-1
+```   
 
 ## Step-4: Create ECR Repository
-- Create simple ECR repo via AWS Console.
-- Make a note of the full repository name.
+- Create simple ECR repo via AWS Console or explore ECR console. 
+
 
 ## Step-5: Create Docker Image locally
 - Create docker image locally
