@@ -26,7 +26,7 @@ pip install awscli
 
 - **On AWS Console**
    - Create Authorization Token for admin user if not created
-   - Configure AWS CLI with Authorization Token
+- **Configure AWS CLI with Authorization Token**
 ```
 aws configure
 AWS Access Key ID: ****
@@ -35,24 +35,27 @@ Default Region Name: ap-south-1
 ```   
 
 ## Step-4: Create ECR Repository
-- Create simple ECR repo via AWS Console or explore ECR console. 
-
+- Create simple ECR repo via AWS Console 
+- Repository Name: aws-ecr-nginx
+- Explore ECR console. 
+- **Create ECR Repository using AWS CLI**
+```
+aws ecr create-repository --repository-name aws-ecrcli-nginx --region ap-south-1
+```
 
 ## Step-5: Create Docker Image locally
+- Navigate to folder **04-ECR-Elastic-Container-Registry** from course github content download. 
 - Create docker image locally
-- Update nginx index.html and keep creating multiple docker images
-- This will be useful when we test Lifecycle policies
+- Review or Update nginx index.html 
 
 ```
 docker build -t 180789647333.dkr.ecr.ap-south-1.amazonaws.com/aws-ecr-nginx:1.0.0 . 
 ```
 
-## Step-6: Create ECR Repository using AWS CLI & Push Docker Image
-- Create ECR Repository using AWS CLI
+## Step-6: Push Docker Image to AWS ECR
 - Push the docker image to ECR
 ```
-aws ecr create-repository --repository-name aws-ecr-nginx --region us-east-1
-aws ecr get-login --no-include-email --region us-east-1
+aws ecr get-login --no-include-email --region ap-south-1
 
 Use "docker login" command from previous command output
 
