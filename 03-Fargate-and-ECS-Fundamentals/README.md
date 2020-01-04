@@ -32,7 +32,7 @@
 ### Step-03-02: Create ECS EC2 Linux Cluster
 - **Pre-requisite**: Create a keypair (ecs-mumbai)
 - **Clutser Settings**
-    - Cluster Name: ecs-demo
+    - Cluster Name: ecs-ec2-demo
     - Provisioning Model: On-Demand
     - EC2 Instance Type: t2.small
     - Number of Instances: 1
@@ -50,12 +50,14 @@
 <img src="https://github.com/stacksimplify/aws-fargate-ecs-masterclass/blob/master/otherfiles/images/03-ECS-Cluster-Features.png" width="1600" height="500">
 
 ## Step-05: Task Definition
-- Task Defintion - Introduction
-<img src="https://github.com/stacksimplify/aws-fargate-ecs-masterclass/blob/master/otherfiles/images/02-ECS-TaskDefintion-ParameterList.png" width="2000" height="500">
 
-- Create a simple Task Definition
-    - **Task Definition:** nginx-app1-td        
-    - **Docker Image:** stacksimplify/nginxapp1:latest
+### Step-05-01: Task Defintion - Introduction
+<img src="https://github.com/stacksimplify/aws-fargate-ecs-masterclass/blob/master/otherfiles/images/02-ECS-TaskDefintion-ParameterList.png" width="2000" height="500">
+-  For introduction slides refer the [presentation slides](/otherfiles/presentations/AWS-FargateECS-Masterclass-Course.pdf). 
+
+### Step-05-02: Create a simple Task Definition
+   - **Task Definition:** nginx-app1-td        
+   - **Docker Image:** stacksimplify/nginxapp1:latest (Available on Docker Hub)
 
 ## Step-06: Service
 - Create a simple ECS service using the 
