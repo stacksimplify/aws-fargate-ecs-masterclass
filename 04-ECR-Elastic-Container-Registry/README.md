@@ -63,7 +63,7 @@ Use "docker login" command from previous command output
 docker push 180789647333.dkr.ecr.ap-south-1.amazonaws.com/aws-ecr-nginx:1.0.0
 ```
 
-## Step-7: Using Amazon ECR Images with Amazon ECS
+## Step-7: Using ECR Image with Amazon ECS
 - Create Task Definition: aws-ecr-nginx
    - Container Image: 180789647333.dkr.ecr.ap-south-1.amazonaws.com/aws-ecr-nginx:1.0.0
 - Create Service: aws-ecr-nginx-svc
