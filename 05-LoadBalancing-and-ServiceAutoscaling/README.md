@@ -1,5 +1,11 @@
 # Load Balancing
-## Step-1: Pre-requisite - Create Docker Images required
+
+## Step-01: What are we going to learn?
+- We are going to build two nginx containers whose application contexts are /app1 and /app2
+- Create the ECS Task Definitions and Services for both applications by levaraging single Application Load balancer with URI based routing. 
+- Implement Autoscaling for ECS Tasks. 
+
+## Step-02: Pre-requisite - Create Docker Images required
 ### Build two container images with their context paths as /app1 and /app2.
 - nginxapp1 - /app1
 - nginxapp2 - /app2
@@ -40,9 +46,9 @@ docker push <replace-with-your-docker-hub-id>/nginxapp2
 docker push <replace-with-your-docker-hub-id>/nginxapp3
 ```
 
-## Step-2: Create Application Load Balancer
+## Step-03: Create Application Load Balancer
 - Create Application Load Balancer
-    - Name: aws-ecs-nginx-lb
+    - **Name:** aws-ecs-nginx-lb
     - IP Address Type
     - Listener
     - Availability Zones
@@ -50,11 +56,11 @@ docker push <replace-with-your-docker-hub-id>/nginxapp3
     - Target Group
     - Register Targets
 
-## Step-3: Create Task Definitions for both App1 and App2
-- App1 Task Definition: aws-nginx-app1
-- App2 Task Definition: aws-nginx-app2
+## Step-04: Create Task Definitions for both App1 and App2
+- **App1 Task Definition:** aws-nginx-app1
+- **App2 Task Definition:** aws-nginx-app2
 
-## Step-4: Create ECS Service for Nginx App1
+## Step-05: Create ECS Service for Nginx App1
 - Create Service
     - Service Name: aws-nginx-app1-svc
     - Number of Tasks: 2
@@ -68,12 +74,12 @@ docker push <replace-with-your-docker-hub-id>/nginxapp3
 - Test by accessing Load Balancer URL. 
 
 
-## Step-5: Create ECS Service for Nginx App1 and leverage same load balancer
+## Step-06: Create ECS Service for Nginx App1 and leverage same load balancer
 - We are going to leverage the same load balancer we used for App1 
 - We are going to provide the App2 path pattern as /app2*
 
 ### Create Service
-- Service Name: aws-nginx-app2-svc
+- **Service Name: aws-nginx-app2-svc
 - Number of Tasks: 2
 - Choose VPC & Create Security Group
 - Select Application Load Balancer
@@ -84,11 +90,11 @@ docker push <replace-with-your-docker-hub-id>/nginxapp3
 - Health check grace period: 147   - **Very Important setting**
 - Test by accessing Load Balancer URL. 
 
-**Important Note:** In short, we are 
+**Important Note:** In short, we will leverage using single Application load balancer for multiple Applications hosted on ECS with URI based routing.  
 
 # Service Autoscaling
 
-## Step-1: Autoscaling: Target Tracking Policy
+## Step-01: Autoscaling: Target Tracking Policy
 - Update any of the existing service to add Autoscaling Policy
 - **Service Name:** aws-nginx-app1-svc
     - Minimum Number of Tasks: 1
@@ -101,7 +107,7 @@ docker push <replace-with-your-docker-hub-id>/nginxapp3
         - Scale-out cooldown period: 60
         - Scale-in cooldown period: 60
 
-## Step-2: Spin up AWS EC2 Instance, Install and use ApacheBench for generating load
+## Step-02: Spin up AWS EC2 Instance, Install and use ApacheBench for generating load
 - **AMI ID:** Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type - ami-00eb20669e0990cb4
 - Install the **ApacheBench (ab)** utility to make thousands of HTTP requests to your load balancer in a short period of time.
 - **Scale-Out Activity**: Keep adding load till we see alarm in cloudwatch and new tasks (2 more containers) created and registered to load balancer
@@ -112,10 +118,10 @@ ab -n 500000 -c 1000 http://EC2Contai-EcsElast-SMAKV74U23PH-96652279.us-east-1.e
 ab -n 500000 -c 1000 http://<REPLACE-WITH-ALB-URL-IN-YOUR-ENVIRONMENT>/app1/index.html
 ```    
 
-## Step-3: Autoscaling - Step Scaling Policy
+## Step-03: Autoscaling - Step Scaling Policy
  - We can even create step scaling policies if required.
 
-## Step-4: Clean up resources
+## Step-04: Clean up resources
 - Update service to 
     - Remove Autoscaling policy in service and disable autoscaling
     - Make number of tasks to zero
