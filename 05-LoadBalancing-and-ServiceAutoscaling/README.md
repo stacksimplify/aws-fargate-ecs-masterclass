@@ -66,16 +66,16 @@ docker push <replace-with-your-docker-hub-id>/nginxapp3
     
 
 ## Step-05: Create ECS Service for Nginx App1
-### Create Service
-    - **Service Name:** aws-nginx-app1-svc
-    - Number of Tasks: 2
-    - Choose VPC & Create Security Group
-    - Select Application Load Balancer
-        - Container to Load Balance
-        - Target Group Name: ecs-nginx-app1-tg
-        - Path Pattern: /app1*
-        - Health Check Path: /app1/index.html
-    - Health check grace period: 147   - **Very Important setting**
+### Create Service for App1
+- **Service Name:** aws-nginx-app1-svc
+- Number of Tasks: 2
+- Choose VPC & Create Security Group
+- Select Application Load Balancer
+    - Container to Load Balance
+    - Target Group Name: ecs-nginx-app1-tg
+    - Path Pattern: /app1*
+    - Health Check Path: /app1/index.html
+- Health check grace period: 147   - **Very Important setting**
 - Test by accessing Load Balancer URL. 
 
 
@@ -84,6 +84,8 @@ docker push <replace-with-your-docker-hub-id>/nginxapp3
 - We are going to provide the App2 path pattern as /app2*
 - We need to need we have the EC2-Linux Lauch Type cluster created atleast with 1 EC2 instance for creating this service. 
     - **EC2 Linux Cluster Name:** ecs-ec2-demo (if not exists create one)
+
+### Create Service for App2
 
 - **Service Name:** aws-nginx-app2-svc
 - Number of Tasks: 2
