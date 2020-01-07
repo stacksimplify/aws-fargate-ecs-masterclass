@@ -86,6 +86,7 @@ docker push <replace-with-your-docker-hub-id>/nginxapp3
     - **EC2 Linux Cluster Name:** ecs-ec2-demo (if not exists create one)
 
 ### Create Service
+
 - **Service Name:** aws-nginx-app2-svc
 - Number of Tasks: 2
 - Choose VPC & Create Security Group
