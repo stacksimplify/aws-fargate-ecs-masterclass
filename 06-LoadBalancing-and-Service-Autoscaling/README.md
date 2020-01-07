@@ -1,10 +1,8 @@
-# Load Balancing & Service Autoscaling
-
 # Load Balancing
 ## Step-1: Pre-requisite - Create Docker Images required
-### **Build** two container images with their context paths as /app1 and /app2.
-    - nginxapp1 - /app1
-    - nginxapp2 - /app2
+### Build two container images with their context paths as /app1 and /app2.
+- nginxapp1 - /app1
+- nginxapp2 - /app2
 ```
 cd Application-1
 docker build -t stacksimplify/nginxapp1 .
@@ -14,9 +12,9 @@ cd ../Application-2
 docker build -t stacksimplify/nginxapp2 .
 docker build -t <replace-with-your-docker-hub-id>/nginxapp2 .
 ```    
-### **Run** the docker images and test those containers locally  
-    - **App1:** http://localhost:81/app1
-    - **App2:** http://localhost:82/app2
+### Run the docker images and test those containers locally  
+- **App1:** http://localhost:81/app1
+- **App2:** http://localhost:82/app2
 ```
 docker run --name nginxapp1 -p 81:80 --rm -d stacksimplify/nginxapp1
 docker run --name nginxapp2 -p 82:80 --rm -d stacksimplify/nginxapp2
@@ -24,14 +22,14 @@ docker run --name nginxapp2 -p 82:80 --rm -d stacksimplify/nginxapp2
 docker run --name nginxapp1 -p 81:80 --rm -d <replace-with-your-docker-hub-id>/nginxapp1
 docker run --name nginxapp2 -p 82:80 --rm -d <replace-with-your-docker-hub-id>/nginxapp2
 ```
-### **Stop** the docker containers
+### Stop the docker containers
 ```
 docker ps
 docker stop nginxapp1
 docker stop nginxapp2
 docker ps -a
 ```    
-### **Push** these two containers to your Docker Hub Repository
+### Push these two containers to your Docker Hub Repository
 ```
 docker images
 docker push stacksimplify/nginxapp1
@@ -86,6 +84,7 @@ docker push <replace-with-your-docker-hub-id>/nginxapp3
 - Health check grace period: 147   - **Very Important setting**
 - Test by accessing Load Balancer URL. 
 
+**Important Note:** In short, we are 
 
 # Service Autoscaling
 
@@ -103,7 +102,7 @@ docker push <replace-with-your-docker-hub-id>/nginxapp3
         - Scale-in cooldown period: 60
 
 ## Step-2: Spin up AWS EC2 Instance, Install and use ApacheBench for generating load
-- AMI ID: Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type - ami-00eb20669e0990cb4
+- **AMI ID:** Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type - ami-00eb20669e0990cb4
 - Install the **ApacheBench (ab)** utility to make thousands of HTTP requests to your load balancer in a short period of time.
 - **Scale-Out Activity**: Keep adding load till we see alarm in cloudwatch and new tasks (2 more containers) created and registered to load balancer
 - **Scale-In Activity**: Stop the load now and wait for 5 to 10 minutes and 
@@ -114,7 +113,7 @@ ab -n 500000 -c 1000 http://<REPLACE-WITH-ALB-URL-IN-YOUR-ENVIRONMENT>/app1/inde
 ```    
 
 ## Step-3: Autoscaling - Step Scaling Policy
- - PENDING for ECS Cluster
+ - We can even create step scaling policies if required.
 
 ## Step-4: Clean up resources
 - Update service to 
