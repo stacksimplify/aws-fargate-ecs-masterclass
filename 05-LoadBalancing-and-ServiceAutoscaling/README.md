@@ -62,7 +62,7 @@ docker push <replace-with-your-docker-hub-id>/nginxapp3
 
 ## Step-05: Create ECS Service for Nginx App1
 - Create Service
-    - Service Name: aws-nginx-app1-svc
+    - **Service Name:** aws-nginx-app1-svc
     - Number of Tasks: 2
     - Choose VPC & Create Security Group
     - Select Application Load Balancer
@@ -79,7 +79,7 @@ docker push <replace-with-your-docker-hub-id>/nginxapp3
 - We are going to provide the App2 path pattern as /app2*
 
 ### Create Service
-- **Service Name: aws-nginx-app2-svc
+- **Service Name:** aws-nginx-app2-svc
 - Number of Tasks: 2
 - Choose VPC & Create Security Group
 - Select Application Load Balancer
