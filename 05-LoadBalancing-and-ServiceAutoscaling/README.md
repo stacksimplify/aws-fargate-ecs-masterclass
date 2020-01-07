@@ -68,6 +68,7 @@ docker push <replace-with-your-docker-hub-id>/nginxapp3
 ## Step-05: Create ECS Service for Nginx App1
 ### Create Service for App1
 - **Service Name:** aws-nginx-app1-svc
+- **Cluster:** fargate-demo
 - Number of Tasks: 2
 - Choose VPC & Create Security Group
 - Select Application Load Balancer
@@ -88,6 +89,7 @@ docker push <replace-with-your-docker-hub-id>/nginxapp3
 ### Create Service for App2
 
 - **Service Name:** aws-nginx-app2-svc
+- **Cluster:** ecs-ec2-demo
 - Number of Tasks: 2
 - Choose VPC & Create Security Group
 - Select Application Load Balancer
