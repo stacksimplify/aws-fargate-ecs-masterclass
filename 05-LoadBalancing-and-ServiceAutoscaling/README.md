@@ -83,7 +83,7 @@ docker push <replace-with-your-docker-hub-id>/nginxapp3
 ## Step-06: Create ECS Service for Nginx App2 and leverage same load balancer
 - We are going to leverage the same load balancer we used for App1 
 - We are going to provide the App2 path pattern as /app2*
-- We need to need we have the EC2-Linux Lauch Type cluster created atleast with 1 EC2 instance for creating this service. 
+- We need to have the **EC2-Linux Lauch Type** cluster created and ready with atleast 1 EC2 instance for creating this service. 
     - **EC2 Linux Cluster Name:** ecs-ec2-demo (if not exists create one)
 
 ### Create Service for App2
