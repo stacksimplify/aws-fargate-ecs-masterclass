@@ -141,3 +141,4 @@ ab -n 500000 -c 1000 http://<REPLACE-WITH-ALB-URL-IN-YOUR-ENVIRONMENT>/app1/inde
     - This way we dont end-up in accidental increase of our AWS bill during our learning process. 
 - Delete Load Balancer (ALB) if we are not using it. 
 - Delete the **ecs-ec2-demo** cluster which keeps charged based on EC2 Instances. 
+- Delete the **ApacheBench EC2 Instance** created for generating the load to test autoscaling policies. 
