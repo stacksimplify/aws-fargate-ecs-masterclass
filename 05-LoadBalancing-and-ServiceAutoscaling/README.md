@@ -118,7 +118,8 @@ docker push <replace-with-your-docker-hub-id>/nginxapp3
         - Scale-in cooldown period: 60
 
 ## Step-02: Spin up AWS EC2 Instance, Install and use ApacheBench for generating load
-- **AMI ID:** Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type - ami-00eb20669e0990cb4
+- **North Virginia AMI ID:** Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type - ami-00eb20669e0990cb4
+- **Asia pacific South Mumbai AMI ID:** Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type - ami-02913db388613c3e1
 - Install the **ApacheBench (ab)** utility to make thousands of HTTP requests to your load balancer in a short period of time.
 - **Scale-Out Activity**: Keep adding load till we see alarm in cloudwatch and new tasks (2 more containers) created and registered to load balancer
 - **Scale-In Activity**: Stop the load now and wait for 5 to 10 minutes and 
@@ -130,6 +131,7 @@ ab -n 500000 -c 1000 http://<REPLACE-WITH-ALB-URL-IN-YOUR-ENVIRONMENT>/app1/inde
 
 ## Step-03: Autoscaling - Step Scaling Policy
  - We can even create step scaling policies if required.
+ - More customizable using CloudWatch alarms 
 
 ## Step-04: Clean up resources
 - Update service to 
@@ -138,3 +140,4 @@ ab -n 500000 -c 1000 http://<REPLACE-WITH-ALB-URL-IN-YOUR-ENVIRONMENT>/app1/inde
     - wait for 5 to 10 minutes and verify and ensure zero tasks (containers) running.
     - This way we dont end-up in accidental increase of our AWS bill during our learning process. 
 - Delete Load Balancer (ALB) if we are not using it. 
+- Delete the **ecs-ec2-demo** cluster which keeps charged based on EC2 Instances. 
