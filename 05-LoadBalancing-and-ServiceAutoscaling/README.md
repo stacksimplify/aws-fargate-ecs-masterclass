@@ -85,8 +85,6 @@ docker push <replace-with-your-docker-hub-id>/nginxapp3
 - We need to need we have the EC2-Linux Lauch Type cluster created atleast with 1 EC2 instance for creating this service. 
     - **EC2 Linux Cluster Name:** ecs-ec2-demo (if not exists create one)
 
-### Create Service
-
 - **Service Name:** aws-nginx-app2-svc
 - Number of Tasks: 2
 - Choose VPC & Create Security Group
