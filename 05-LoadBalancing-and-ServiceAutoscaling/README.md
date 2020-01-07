@@ -58,9 +58,12 @@ docker push <replace-with-your-docker-hub-id>/nginxapp3
 
 ## Step-04: Create Task Definitions for both App1 and App2
 - **App1 Task Definition:** aws-nginx-app1
+    - **Launch Type:** Fargate
     - **Container Image:** stacksimplify/nginxapp1
 - **App2 Task Definition:** aws-nginx-app2
+    - **Launch Type:** EC2
     - **Container Image:** stacksimplify/nginxapp2
+    
 
 ## Step-05: Create ECS Service for Nginx App1
 - Create Service
