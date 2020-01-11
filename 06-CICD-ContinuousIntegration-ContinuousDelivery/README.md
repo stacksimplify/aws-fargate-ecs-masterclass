@@ -5,24 +5,24 @@
 
 ## Step-02: Pre-requisite Step - Create Staging and production services in ECS
 - **Create ECS Task Definition**
-  - Name: aws-ecs-cicd-nginx 
-  - Container Name: aws-ecs-cicd-nginx  
+  - Name: ecs-cicd-nginx 
+  - Container Name: ecs-cicd-nginx  
   - **Important Note: Make a note of this container name, this should be same as we give in our buildspec.yml for container name**
   - Image: stacksimplify/nginxapp2:latest
 - **Create Staging ECS Service**
-  - Name: staging-aws-ecs-cicd-nginx-svc
+  - Name: staging-ecs-cicd-nginx-svc
   - Number of Tasks: 1
 - **Create Production ECS Service**
-  - Name: prod-aws-ecs-cicd-nginx-svc
+  - Name: prod-ecs-cicd-nginx-svc
   - Number of Tasks: 1  
 
 
 ## Step-03: Create CodeCommit Repository
-- Create Code Commit Repository with name as **aws-ecs-cicd-nginx**
+- Create Code Commit Repository with name as **ecs-cicd-nginx**
 - Create git credentials from IAM Service and make a note of those credentials.
 - Clone the git repository from Code Commit to local repository
 ```
-git clone https://git-codecommit.ap-south-1.amazonaws.com/v1/repos/aws-ecs-cicd-nginx1
+git clone https://git-codecommit.ap-south-1.amazonaws.com/v1/repos/ecs-cicd-nginx
 ```
 - Copy below listed two files from course section **06-CICD-ContinuousIntegration-ContinuousDelivery** to local repository
   - Dockerfile 
@@ -38,12 +38,12 @@ git status
 - Verify the same on CodeCommit Repository in AWS Management console.
 
 ## Step-04: Create buildspec.yml for CodeBuild
-- Create a new repository in Elastic Container Registry (ECR) with name as **aws-ecs-cicd-nginx** and make a note of ECR Repository full name. 
-- Create **buildspec.yml** file in local desktop folder **aws-ecs-cicd-nginx**
+- Create a new repository in Elastic Container Registry (ECR) with name as **ecs-cicd-nginx** and make a note of ECR Repository full name. 
+- Create **buildspec.yml** file in local desktop folder **ecs-cicd-nginx**
 - Update **buildspec.yml** file
    - Update **REPOSITORY_URI** value with complete ECR Repository name 
-   - Update the **Container Name** at **printf '[{"name":"aws-ecs-cicd-nginx"** in buildspec.yml
-   - **Important Note:** In ECS Task Definition also when we are creating it, please ensure we give the container name as **aws-ecs-cicd-nginx**
+   - Update the **Container Name** at **printf '[{"name":"ecs-cicd-nginx"** in buildspec.yml
+   - **Important Note:** In ECS Task Definition also when we are creating it, please ensure we give the container name as **ecs-cicd-nginx**
 
 ### buildspec.yml
 
@@ -59,7 +59,7 @@ phases:
       - echo Logging in to Amazon ECR.....
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      - REPOSITORY_URI=180789647333.dkr.ecr.ap-south-1.amazonaws.com/aws-ecs-cicd-nginx
+      - REPOSITORY_URI=180789647333.dkr.ecr.ap-south-1.amazonaws.com/ecs-cicd-nginx
       - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
   build:
     commands:
@@ -72,7 +72,7 @@ phases:
       - echo Pushing the Docker images...
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"aws-ecs-cicd-nginx","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"ecs-cicd-nginx","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
     files: imagedefinitions.json
 ```
