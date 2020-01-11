@@ -3,8 +3,21 @@
 ## Step-01: Introduction to CI CD
 -  For introduction slides refer the [presentation slides](/otherfiles/presentations/AWS-FargateECS-Masterclass-Course.pdf). 
 
+## Step-02: Pre-requisite Step - Create Staging and production services in ECS
+- **Create ECS Task Definition**
+  - Name: aws-ecs-cicd-nginx 
+  - Container Name: aws-ecs-cicd-nginx  
+  - **Important Note: Make a note of this container name, this should be same as we give in our buildspec.yml for container name)**
+  - Image: 180789647333.dkr.ecr.ap-south-1.amazonaws.com/aws-ecr-nginx:1.0.0
+- **Create ECS Service**
+  - Name: stging-aws-ecs-cicd-nginx-svc
+  - Number of Tasks: 1
+- **Create ECS Service**
+  - Name: prod-aws-ecs-cicd-nginx-svc
+  - Number of Tasks: 1  
 
-## Step-02: Create CodeCommit Repository
+
+## Step-03: Create CodeCommit Repository
 - Create Code Commit Repository with name as **aws-ecs-cicd-nginx**
 - Create git credentials from IAM Service and make a note of those credentials.
 - Clone the git repository from Code Commit to local repository
@@ -24,7 +37,7 @@ git status
 ```
 - Verify the same on CodeCommit Repository in AWS Management console.
 
-## Step-03: Create buildspec.yml for CodeBuild
+## Step-04: Create buildspec.yml for CodeBuild
 - Create a new repository in Elastic Container Registry (ECR) with name as **aws-ecs-cicd-nginx** and make a note of ECR Repository full name. 
 - Create **buildspec.yml** file in local desktop folder **aws-ecs-cicd-nginx**
 - Update **buildspec.yml** file
@@ -72,14 +85,7 @@ git commit -am "2-Added buildspec.yml"
 git push
 git status
 ```
-## Step-04: ECS - Create Task Definition & Service
-- **Create Task Definition**
-  - Name: aws-ecs-cicd-nginx
-  - Container Name: aws-ecs-cicd-nginx
-  - Image: 180789647333.dkr.ecr.ap-south-1.amazonaws.com/aws-ecs-cicd-nginx
-- **Create Service**
-  - Name: aws-ecs-cicd-nginx-svc-staging
-  - Number of Tasks: 1
+
 
 ## Step-05: Create CodePipeline
 - Create CodePipeline
