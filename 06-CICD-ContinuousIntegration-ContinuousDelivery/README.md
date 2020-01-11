@@ -10,7 +10,7 @@
   - **Important Note: Make a note of this container name, this should be same as we give in our buildspec.yml for container name**
   - Image: stacksimplify/nginxapp2:latest
 - **Create Staging ECS Service**
-  - Name: stging-aws-ecs-cicd-nginx-svc
+  - Name: staging-aws-ecs-cicd-nginx-svc
   - Number of Tasks: 1
 - **Create Production ECS Service**
   - Name: prod-aws-ecs-cicd-nginx-svc
