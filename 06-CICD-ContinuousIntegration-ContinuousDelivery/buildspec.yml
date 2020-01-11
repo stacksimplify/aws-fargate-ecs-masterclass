@@ -1,4 +1,3 @@
-# Build the container, push to ECR and deploy to ECS or Fargate cluster. 
 version: 0.2
 
 phases:
@@ -10,7 +9,7 @@ phases:
       - echo Logging in to Amazon ECR.....
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      - REPOSITORY_URI=180789647333.dkr.ecr.us-east-1.amazonaws.com/aws-ecr-nginx
+      - REPOSITORY_URI=180789647333.dkr.ecr.ap-south-1.amazonaws.com/aws-ecs-cicd-nginx
       - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
   build:
     commands:
@@ -23,6 +22,6 @@ phases:
       - echo Pushing the Docker images...
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"aws-ecr-nginx","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"aws-ecs-cicd-nginx","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
     files: imagedefinitions.json
