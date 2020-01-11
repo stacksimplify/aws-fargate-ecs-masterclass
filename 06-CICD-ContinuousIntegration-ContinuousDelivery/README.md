@@ -104,7 +104,13 @@ git commit -am "V2 Deployment"
 git push
 ```
 
+## Step-07: Create Manual Approval stage in CodePipeline
+- Create SNS Topic and confirm the email subsciption for sending notificaitons.
+- Edit Pipeline and Create **Manual Approval Stage**
 
+
+## Step-08: Create Deploy to Prod ECS Service stage in CodePipeline
+- Edit the pipeline and create **Deploy to prod ECS Service**
 
 
 
