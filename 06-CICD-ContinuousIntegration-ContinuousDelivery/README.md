@@ -7,7 +7,7 @@
 - **Create ECS Task Definition**
   - Name: aws-ecs-cicd-nginx 
   - Container Name: aws-ecs-cicd-nginx  
-  - **Important Note: Make a note of this container name, this should be same as we give in our buildspec.yml for container name)**
+  - **Important Note: Make a note of this container name, this should be same as we give in our buildspec.yml for container name**
   - Image: stacksimplify/nginxapp2:latest
 - **Create ECS Service**
   - Name: stging-aws-ecs-cicd-nginx-svc
