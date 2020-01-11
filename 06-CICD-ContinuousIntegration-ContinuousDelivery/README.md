@@ -8,7 +8,7 @@
   - Name: aws-ecs-cicd-nginx 
   - Container Name: aws-ecs-cicd-nginx  
   - **Important Note: Make a note of this container name, this should be same as we give in our buildspec.yml for container name)**
-  - Image: 180789647333.dkr.ecr.ap-south-1.amazonaws.com/aws-ecr-nginx:1.0.0
+  - Image: stacksimplify/nginxapp2:latest
 - **Create ECS Service**
   - Name: stging-aws-ecs-cicd-nginx-svc
   - Number of Tasks: 1
