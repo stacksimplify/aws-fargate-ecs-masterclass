@@ -112,7 +112,7 @@ AWS_MAIL_SERVER_FROM_ADDRESS= use-a-valid-email@gmail.com
     - Task CPU: 1 vCPU
 - **Configure Container Definition**    
     - Container Name: notification-microservice
-    - Image: stacksimplify/notification-microservice:1.0.0
+    - Image: stacksimplify/notifications-microservice:1.0.0
     - Container Port: 8096
     - Environment Variables
         - AWS_MAIL_SERVER_HOST=email-smtp.us-east-1.amazonaws.com
