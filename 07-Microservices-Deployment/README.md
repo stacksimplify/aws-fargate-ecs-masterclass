@@ -104,7 +104,7 @@ AWS_MAIL_SERVER_FROM_ADDRESS= use-a-valid-email@gmail.com
 # Module - 2: Deploy Notification Service
 ## Step-1: Notification Microservice - Create Task Definition
 - **Configure Task Definition**
-    - Task Definition Name: notification-microservice
+    - Task Definition Name: notification-microservice-td
     - Task Role: ecsTaskExecutionRole
     - Network Mode: awsvpc
     - Task Execution Role: ecsTaskExecutionRole
@@ -124,7 +124,7 @@ AWS_MAIL_SERVER_FROM_ADDRESS= use-a-valid-email@gmail.com
 - **Configure Service**
     - Launch Type: Fargate
     - Task Definition:
-        - Family: notification-microservice
+        - Family: notification-microservice-td
         - Version: 1(latest) 
     - Service Name: svc-notification-microservice
     - Number of Tasks: 1
@@ -163,7 +163,7 @@ http://services.stacksimplify.com/notification/health-status
 # Module - 3: Deploy User Management Service
 ## Step-1: User Management Service - Create Task Definition
 - **Configure Task Definition**
-    - Task Definition Name: usermgmt-microservice
+    - Task Definition Name: usermgmt-microservice-td
     - Task Role: ecsTaskExecutionRole
     - Network Mode: awsvpc
     - Task Execution Role: ecsTaskExecutionRole
@@ -186,7 +186,7 @@ http://services.stacksimplify.com/notification/health-status
 - **Configure Service**
     - Launch Type: Fargate
     - Task Definition:
-        - Family: usermgmt-microservice
+        - Family: usermgmt-microservice-td
         - Version: 1(latest) 
     - Service Name: svc-usermgmt-microservice
     - Number of Tasks: 1
