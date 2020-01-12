@@ -20,22 +20,40 @@
 
 ## Step-2: Pre-requisite -1: Create AWS RDS Database
 - Create a RDS MySQL Database
+- **Chose a Database Creation Method**
+    - Standard Create
 - **Select Engine**
     - Engine Options: MySQL
-    - Only enable options eligible for RDS Free Usage Tier: Check this box
-- **Specify DB Details**
+- **Template**
+    - Only enable options eligible for RDS Free Usage Tier: Free tier
+- **Settings**
     - DB Instance Identifier: microservicesdb
     - Master Username: dbadmin
     - Master Password: **Choose the password as you like and make a note of it**
     - Confirm Password: **Choose the password as you like and make a note of it**
     - Database Options
-- **Configure Advance Settings**
-    - Network & Security: leave defaults with default VPC 
+- **DB Instance Size**
+    - leave defaults
+- **Storage**    
+    - Uncheck Enable storage autoscaling for safety purpose as this is test db.
+    - rest all leave to defaults
+- **Connectivity**
+    - VPC: ecs-vpc
+    - Subnet Group: Create new DB subnet group    
+    - Publicly Accessible: Yes (For troubleshooting purposes - Not required in real cases)
+    - VPC Security Group
+        - Create new VPC Secutiry Group: check
+        - Name of VPC Security Group: microservices-rds-db-sg
+    - Availability Zone: ap-south-1a
+    - Database Port: 3306 (leave default)       
+- **Database Authentication**
+    - Leave defaults
+- **Additional Configuration**
     - Database Options
-        - Database Name: usermgmt
-        - Port: 3306
+        - Initial Database Name: usermgmt
     - Backup
-        - Backup Retention Period: 0 days
+        - Uncheck
+    - rest all default        
 
 - **Environment Variables**
 - Gather the following details from RDS MySQL database to provide them as environment variables in our ECS Task Definition
