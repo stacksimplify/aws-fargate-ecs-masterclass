@@ -3,11 +3,16 @@
 # Module - 1: Introduction & Pre-requisites
 ## Step-1: What are we going to learn in this section?
 - We are going to deploy two microservices.
+    - User Management Service
+    - Notification Service
 
-## Architecture Diagram about our Buildout
+### Usecase Description
+- User Management **Create User API**  will call Notification service **Send Notification API** to send an email to user when we create a user. 
+
+### Architecture Diagram about our Buildout
 -  For introduction slides refer the [presentation slides](/otherfiles/presentations/AWS-FargateECS-Masterclass-Course.pdf). 
 
-## List of Docker Images used in this section
+### List of Docker Images used in this section
 | Application Name                 | Docker Image Name                          |
 | ------------------------------- | --------------------------------------------- |
 | User Management Microservice | stacksimplify/usermanagement-microservice:1.0.0 |
