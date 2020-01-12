@@ -16,7 +16,7 @@
 | Application Name                 | Docker Image Name                          |
 | ------------------------------- | --------------------------------------------- |
 | User Management Microservice | stacksimplify/usermanagement-microservice:1.0.0 |
-| Notifications Microservice | tacksimplify/notifications-microservice:1.0.0 |
+| Notifications Microservice | stacksimplify/notifications-microservice:1.0.0 |
 
 ## Step-2: Pre-requisite -1: Create AWS RDS Database
 - Create a RDS MySQL Database
