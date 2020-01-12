@@ -223,4 +223,4 @@ http://services.stacksimplify.com/usermgmt/health-status
 - User management service calling notification service via internet using ALB.
 - Both services present in same VPC, same network and sitting next to each other and for communication going over the internet
 - How to fix this?
-- Service Discovery concept will be the solution for the same. 
+- **Microservices - Service Discovery** concept will be the solution for the same and in our next section we will see how to implement that on **AWS Fargate and ECS**. 
