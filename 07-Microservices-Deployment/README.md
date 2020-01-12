@@ -101,7 +101,7 @@ AWS_MAIL_SERVER_FROM_ADDRESS= use-a-valid-email@gmail.com
         - Alias: Yes
         - Alias Name: microservices-alb url
 
-# Module - 2: Deploy Notification Service
+# Module - 2: Deploy Notification Microservice
 ## Step-1: Notification Microservice - Create Task Definition
 - **Configure Task Definition**
     - Task Definition Name: notification-microservice-td
@@ -160,7 +160,7 @@ http://services.stacksimplify.com/notification/health-status
 ```
 
 
-# Module - 3: Deploy User Management Service
+# Module - 3: Deploy User Management Microservice
 ## Step-1: User Management Service - Create Task Definition
 - **Configure Task Definition**
     - Task Definition Name: usermgmt-microservice-td
