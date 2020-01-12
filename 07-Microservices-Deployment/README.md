@@ -182,7 +182,11 @@ http://services.stacksimplify.com/notification/health-status
         - NOTIFICATION_SERVICE_HOST=services.stacksimplify.com [or] ALB DNS Name
         - NOTIFICATION_SERVICE_PORT=80
 
-## Step-2: User Management Service - Create Service
+## Step-2: Allow Connections from ECS to RDS DB
+- Identify the ECS security group which we are going to use for User Management Service
+- Update the RDS Database security group inbound rules to allow connectivity for port 3306 from ECS Usermanagement security group.
+
+## Step-3: User Management Service - Create Service
 - **Configure Service**
     - Launch Type: Fargate
     - Task Definition:
@@ -208,7 +212,7 @@ http://services.stacksimplify.com/notification/health-status
 - **Important Note:** Disable Service Discovery for now
 
 
-## Step-3: User Management Microservice - Verify the deployment and access the service. 
+## Step-4: User Management Microservice - Verify the deployment and access the service. 
 - Verify tasks are in **RUNNING** state in Service
 - Verify ALB - Target Groups section, Registered Tagets status to confirm if health checks are succeeding. If healthy, you shoud see
     - Status: Healthy
