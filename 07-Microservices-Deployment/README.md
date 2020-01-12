@@ -1,7 +1,7 @@
 # Microservices Deployment on AWS Fargate & ECS Clusters
 
 # Module - 1: Introduction & Pre-requisites
-## What are we going to learn in this section?
+## Step-1: What are we going to learn in this section?
 - Step-1: 
 - Step-2: 
 - Step-3:
@@ -14,9 +14,9 @@
 | User Management Microservice | stacksimplify/usermanagement-microservice:1.0.0 |
 | Notifications Microservice | tacksimplify/notifications-microservice:1.0.0 |
 
-## Step-1: Pre-requisite -1: Create AWS RDS Database
+## Step-2: Pre-requisite -1: Create AWS RDS Database
 - Create a RDS MySQL Database
-- Select Enginer
+- Select Engine
     - Engine Options: MySQL
     - Only enable options eligible for RDS Free Usage Tier: Check this box
 - Specify DB Details
@@ -35,15 +35,15 @@
 
 - Gather the following details from RDS MySQL database to provide them as environment variables in our ECS Task Definition
 ```
-AWS_RDS_HOSTNAME=<gather db endpoint from Connectivity & security --> Endpoint & port section>
-microservicesdb.cxojydmxwly6.us-east-1.rds.amazonaws.com
+AWS_RDS_HOSTNAME=<gather db endpoint information from Connectivity & security --> Endpoint & port section>
+AWS_RDS_HOSTNAME=microservicesdb.cxojydmxwly6.us-east-1.rds.amazonaws.com
 AWS_RDS_PORT=3306
 AWS_RDS_DB_NAME=usermgmt
 AWS_RDS_USERNAME=dbadmin
 AWS_RDS_PASSWORD=*****
 ```
 
-## Step-2: Pre-requisite-2: Create Simple Email Service - SES SMTP Credentials
+## Step-3: Pre-requisite-2: Create Simple Email Service - SES SMTP Credentials
 ### SMTP Credentials
 - SMTP Settings --> Create My SMTP Credentials
 - IAM User Name: append the default generated name with microservice or something so we have a reference of this IAM user created for our ECS Microservice deployment
@@ -52,8 +52,9 @@ AWS_RDS_PASSWORD=*****
 AWS_MAIL_SERVER_HOST=email-smtp.us-east-1.amazonaws.com
 AWS_MAIL_SERVER_USERNAME=
 AWS_MAIL_SERVER_PASSWORD=
-AWS_MAIL_SERVER_FROM_ADDRESS= can-be-anything@gmail.com
+AWS_MAIL_SERVER_FROM_ADDRESS= use-a-valid-email@gmail.com 
 ```
+- **Important Note:** Environment variabel AWS_MAIL_SERVER_FROM_ADDRESS value should be a **valid** email address and also verified in SES. 
 
 ### Verfiy Email Addresses to which notifications we need to send.
 - We need two email addresses for testing Notification Service.  
@@ -65,7 +66,7 @@ AWS_MAIL_SERVER_FROM_ADDRESS= can-be-anything@gmail.com
 - **Important Note:** We need to ensure all the emails (FromAddress email) and (ToAddress emails) to be verified here. 
     - Reference Link: https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html    
 
-## Step-3: Pre-requisite-3: Create Application Load Balancer & DNS Register it in Route53
+## Step-4: Pre-requisite-3: Create Application Load Balancer & DNS Register it in Route53
 - Create Application Load Balancer
     - Name: microservices-alb
     - Availability Zones: ecs-vpc:  us-east-1a, us-east-1b
@@ -92,10 +93,10 @@ AWS_MAIL_SERVER_FROM_ADDRESS= can-be-anything@gmail.com
     - Image: stacksimplify/notification-microservice:1.0.0
     - Container Port: 8095
     - Environment Variables
-        - AWS_MAIL_SERVER_HOST
-        - AWS_MAIL_SERVER_USERNAME
-        - AWS_MAIL_SERVER_PASSWORD
-        - AWS_MAIL_SERVER_FROM_ADDRESS
+        - AWS_MAIL_SERVER_HOST=email-smtp.us-east-1.amazonaws.com
+        - AWS_MAIL_SERVER_USERNAME=*****
+        - AWS_MAIL_SERVER_PASSWORD=*****
+        - AWS_MAIL_SERVER_FROM_ADDRESS=stacksimplify@gmail.com
 
 ## Step-2: Notification Microservice - Create Service
 - Configure Service
@@ -111,6 +112,8 @@ AWS_MAIL_SERVER_FROM_ADDRESS= can-be-anything@gmail.com
     - Security Groups: ecs-microservices-inbound 
         - Allow traffic from ALB security group or anywhere
         - Inbound Port 8095 and 8096 (for both notification & usermanagement service)
+        - Notification Service uses Port 8096
+        - User Management Service uses port 8095
     - Health Check Grace Period: 147
     - Load Balancing
         - Load Balancer Type: Application Load Balancer
@@ -198,8 +201,16 @@ http://services.stacksimplify.com/usermgmt/health-status
 ## Step-1: Import postman project to Postman client on our desktop. 
 - Import postman project
 - Add environment url 
-    - http://services.stacksimplify.com
+    - http://services.stacksimplify.com (**Replace with your ALB DNS registered url on your environment**)
 
 ## Step-2: Test both Microservices using Postman
-- Test **Create User service** and verify the email id to confirm account creation email received.
-- Test **Send Notification service** and verify the email id to confirm test email received. 
+### Notification Service
+- Send Notification
+    - Verify you have got email to the specified email address. 
+- Health Status
+### User Management Service
+- **Create User**
+    - Verify the email id to confirm account creation email received.
+- **List User**   
+    - Verify if newly created user got list. 
+

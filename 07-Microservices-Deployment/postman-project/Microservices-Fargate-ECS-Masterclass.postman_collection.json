@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "1f707deb-f9e4-46aa-a389-7cce21166c3a",
+		"name": "Microservices-Fargate-ECS-Masterclass",
+		"description": "Microservices Deployed to ECS and Fargate clusters as part of Masterclass course",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "UserManagement-Service",
+			"item": [
+				{
+					"name": "UserManagement-CreateUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"kalyan1\",\n\t\"email\": \"dkalyanreddy@gmail.com\",\n\t\"firstname\": \"Kalyan1\",\n\t\"lastname\": \"Reddy1\"\n\t\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/usermgmt/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usermgmt",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserManagement-ListAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/usermgmt/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usermgmt",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserManagement-UpdateUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"kalyan1\",\n\t\"email\": \"dkalyanreddy@gmail.com\",\n\t\"firstname\": \"Kalyan1\",\n\t\"lastname\": \"Reddy1\"\n\t\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserManagement-DeleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/usermgmt/user/kalyan1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usermgmt",
+								"user",
+								"kalyan1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserManagement-HealthStatus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/usermgmt/health-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usermgmt",
+								"health-status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserMgmt-NotificationService-Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/usermgmt/notification-service-info",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usermgmt",
+								"notification-service-info"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Notification-Service",
+			"item": [
+				{
+					"name": "NotificationService-SendNotification",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"subject\": \"Test4\",\n\t\"content\": \"Test4 Email\",\n\t\"toEmails\": [\"dkalyanreddy@gmail.com\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/notification/send",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notification",
+								"send"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NotificationService-HealthStatus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/notification/health-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notification",
+								"health-status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NotificationService-Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/notification/info",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notification",
+								"info"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a3134af0-60c9-44bb-b244-b5e5686d79dd",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a850eb0a-a6ae-413c-9106-4665240aae6b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
