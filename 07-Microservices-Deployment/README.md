@@ -163,7 +163,7 @@ http://services.stacksimplify.com/notification/health-status
 # Module - 3: Deploy User Management Microservice
 ## Step-1: User Management Service - Create Task Definition
 - **Configure Task Definition**
-    - Task Definition Name: usermgmt-microservice-td
+    - Task Definition Name: usermgmt-microservice-td1
     - Task Role: ecsTaskExecutionRole
     - Network Mode: awsvpc
     - Task Execution Role: ecsTaskExecutionRole
@@ -186,7 +186,7 @@ http://services.stacksimplify.com/notification/health-status
 - **Configure Service**
     - Launch Type: Fargate
     - Task Definition:
-        - Family: usermgmt-microservice-td
+        - Family: usermgmt-microservice-td1
         - Version: 1(latest) 
     - Service Name: svc-usermgmt-microservice
     - Number of Tasks: 1
