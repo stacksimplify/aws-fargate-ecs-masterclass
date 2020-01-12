@@ -219,3 +219,8 @@ http://services.stacksimplify.com/usermgmt/health-status
 - **List User**   
     - Verify if newly created user got list. 
 
+## Drawbacks of this setup
+- User management service calling notification service via internet using ALB.
+- Both services present in same VPC, same network and sitting next to each other and for communication going over the internet
+- How to fix this?
+- Service Discovery concept will be the solution for the same. 
