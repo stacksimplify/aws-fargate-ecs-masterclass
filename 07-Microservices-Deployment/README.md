@@ -16,16 +16,16 @@
 
 ## Step-2: Pre-requisite -1: Create AWS RDS Database
 - Create a RDS MySQL Database
-- Select Engine
+- **Select Engine**
     - Engine Options: MySQL
     - Only enable options eligible for RDS Free Usage Tier: Check this box
-- Specify DB Details
+- **Specify DB Details**
     - DB Instance Identifier: microservicesdb
     - Master Username: dbadmin
     - Master Password: **Choose the password as you like and make a note of it**
     - Confirm Password: **Choose the password as you like and make a note of it**
     - Database Options
-- Configure Advance Settings
+- **Configure Advance Settings**
     - Network & Security: leave defaults with default VPC 
     - Database Options
         - Database Name: usermgmt
@@ -33,6 +33,7 @@
     - Backup
         - Backup Retention Period: 0 days
 
+- **Environment Variables**
 - Gather the following details from RDS MySQL database to provide them as environment variables in our ECS Task Definition
 ```
 AWS_RDS_HOSTNAME=<gather db endpoint information from Connectivity & security --> Endpoint & port section>
@@ -46,7 +47,7 @@ AWS_RDS_PASSWORD=*****
 ## Step-3: Pre-requisite-2: Create Simple Email Service - SES SMTP Credentials
 ### SMTP Credentials
 - SMTP Settings --> Create My SMTP Credentials
-- IAM User Name: append the default generated name with microservice or something so we have a reference of this IAM user created for our ECS Microservice deployment
+- **IAM User Name:** append the default generated name with microservice or something so we have a reference of this IAM user created for our ECS Microservice deployment
 - Download the credentials and update the same for below environment variables which you are going to provide in container definition section of Task Definition. 
 ```
 AWS_MAIL_SERVER_HOST=email-smtp.us-east-1.amazonaws.com
@@ -54,11 +55,11 @@ AWS_MAIL_SERVER_USERNAME=
 AWS_MAIL_SERVER_PASSWORD=
 AWS_MAIL_SERVER_FROM_ADDRESS= use-a-valid-email@gmail.com 
 ```
-- **Important Note:** Environment variabel AWS_MAIL_SERVER_FROM_ADDRESS value should be a **valid** email address and also verified in SES. 
+- **Important Note:** Environment variable AWS_MAIL_SERVER_FROM_ADDRESS value should be a **valid** email address and also verified in SES. 
 
 ### Verfiy Email Addresses to which notifications we need to send.
 - We need two email addresses for testing Notification Service.  
--  Email Addresses
+-  **Email Addresses**
     - Verify a New Email Address
     - Email Address Verification Request will be sent to that address, click on link to verify your email. 
     - From Address: stacksimplify@gmail.com (replace with your ids during verification)
@@ -67,12 +68,12 @@ AWS_MAIL_SERVER_FROM_ADDRESS= use-a-valid-email@gmail.com
     - Reference Link: https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html    
 
 ## Step-4: Pre-requisite-3: Create Application Load Balancer & DNS Register it in Route53
-- Create Application Load Balancer
+- **Create Application Load Balancer**
     - Name: microservices-alb
     - Availability Zones: ecs-vpc:  us-east-1a, us-east-1b
     - Security Group: microservices-sg-alb (Inbound: Port 80)
     - Target Group: temp-tg-micro (Rest all defaults)
-- DNS register the LB URL with a custom domain name something like "services.stacksimplify.com" in Route53. 
+- **DNS register the LB URL** with a custom domain name something like "services.stacksimplify.com" in Route53. 
     - Gather the DNS Name of "microservices-alb"
     - Create a Record set in Hosted Zone
         - Record Set Name: services.stacksimplify.com
@@ -81,14 +82,14 @@ AWS_MAIL_SERVER_FROM_ADDRESS= use-a-valid-email@gmail.com
 
 # Module - 2: Deploy Notification Service
 ## Step-1: Notification Microservice - Create Task Definition
-- Configure Task Definition
+- **Configure Task Definition**
     - Task Definition Name: notification-microservice
     - Task Role: ecsTaskExecutionRole
     - Network Mode: awsvpc
     - Task Execution Role: ecsTaskExecutionRole
     - Task Memory: 2GB
     - Task CPU: 1 vCPU
-- Configure Container Definition    
+- **Configure Container Definition**    
     - Container Name: notification-microservice
     - Image: stacksimplify/notification-microservice:1.0.0
     - Container Port: 8095
@@ -99,14 +100,14 @@ AWS_MAIL_SERVER_FROM_ADDRESS= use-a-valid-email@gmail.com
         - AWS_MAIL_SERVER_FROM_ADDRESS=stacksimplify@gmail.com
 
 ## Step-2: Notification Microservice - Create Service
-- Configure Service
+- **Configure Service**
     - Launch Type: Fargate
     - Task Definition:
         - Family: notification-microservice
         - Version: 1(latest) 
     - Service Name: svc-notification-microservice
     - Number of Tasks: 1
-- Configure Network
+- **Configure Network**
     - VPC: ecs-vpc
     - Subnets: us-east-1a, us-east-1b
     - Security Groups: ecs-microservices-inbound 
@@ -115,7 +116,7 @@ AWS_MAIL_SERVER_FROM_ADDRESS= use-a-valid-email@gmail.com
         - Notification Service uses Port 8096
         - User Management Service uses port 8095
     - Health Check Grace Period: 147
-    - Load Balancing
+    - **Load Balancing**
         - Load Balancer Type: Application Load Balancer
         - Load Balancer Name: microservices-alb        
         - Container to Load Balance: notification-microservice : 8096  **Click Add to Load Balancer **
@@ -140,18 +141,18 @@ http://services.stacksimplify.com/notification/health-status
 
 # Module - 3: Deploy User Management Service
 ## Step-1: User Management Service - Create Task Definition
-- Configure Task Definition
+- **Configure Task Definition**
     - Task Definition Name: usermgmt-microservice
     - Task Role: ecsTaskExecutionRole
     - Network Mode: awsvpc
     - Task Execution Role: ecsTaskExecutionRole
     - Task Memory: 2GB
     - Task CPU: 1 vCPU
-- Configure Container Definition    
+- **Configure Container Definition**
     - Container Name: usermanagement-microservice
     - Image: stacksimplify/usermanagement-microservice:1.0.0
     - Container Port: 8095
-    - Environment Variables
+    - **Environment Variables**
         - AWS_RDS_HOSTNAME=microservicesdb.cxojydmxwly6.us-east-1.rds.amazonaws.com
         - AWS_RDS_PORT=3306
         - AWS_RDS_DB_NAME=usermgmt
@@ -161,21 +162,21 @@ http://services.stacksimplify.com/notification/health-status
         - NOTIFICATION_SERVICE_PORT=80
 
 ## Step-2: User Management Service - Create Service
-- Configure Service
+- **Configure Service**
     - Launch Type: Fargate
     - Task Definition:
         - Family: usermgmt-microservice
         - Version: 1(latest) 
     - Service Name: svc-usermgmt-microservice
     - Number of Tasks: 1
-- Configure Network
+- **Configure Network**
     - VPC: ecs-vpc
     - Subnets: us-east-1a, us-east-1b
     - Security Groups: ecs-microservices-inbound (already configured during notification service)
         - Allow traffic from ALB security group or anywhere
         - Inbound Port 8095 and 8096 (for both notification & usermanagement service)
     - Health Check Grace Period: 147
-    - Load Balancing
+    - **Load Balancing**
         - Load Balancer Type: Application Load Balancer
         - Load Balancer Name: microservices-alb        
         - Container to Load Balance: usermgmt-microservice : 8095  **Click Add to Load Balancer **
