@@ -31,7 +31,6 @@
     - Master Username: dbadmin
     - Master Password: **Choose the password as you like and make a note of it**
     - Confirm Password: **Choose the password as you like and make a note of it**
-    - Database Options
 - **DB Instance Size**
     - leave defaults
 - **Storage**    
