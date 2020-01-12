@@ -113,7 +113,7 @@ AWS_MAIL_SERVER_FROM_ADDRESS= use-a-valid-email@gmail.com
 - **Configure Container Definition**    
     - Container Name: notification-microservice
     - Image: stacksimplify/notification-microservice:1.0.0
-    - Container Port: 8095
+    - Container Port: 8096
     - Environment Variables
         - AWS_MAIL_SERVER_HOST=email-smtp.us-east-1.amazonaws.com
         - AWS_MAIL_SERVER_USERNAME=*****
