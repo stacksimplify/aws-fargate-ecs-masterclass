@@ -2,11 +2,10 @@
 
 # Module - 1: Introduction & Pre-requisites
 ## Step-1: What are we going to learn in this section?
-- Step-1: 
-- Step-2: 
-- Step-3:
+- We are going to deploy two microservices.
 
 ## Architecture Diagram about our Buildout
+-  For introduction slides refer the [presentation slides](/otherfiles/presentations/AWS-FargateECS-Masterclass-Course.pdf). 
 
 ## List of Docker Images used in this section
 | Application Name                 | Docker Image Name                          |
