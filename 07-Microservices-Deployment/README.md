@@ -240,7 +240,7 @@ http://services.stacksimplify.com/usermgmt/health-status
 - **Create User**
     - Verify the email id to confirm account creation email received.
 - **List User**   
-    - Verify if newly created user got list. 
+    - Verify if newly created user got listed. 
 
 ## Drawbacks of this setup
 - User management service calling notification service via internet using ALB.

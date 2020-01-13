@@ -55,20 +55,24 @@
 - **Create User**
     - Verify the email id to confirm account creation email received.
 - **List User**   
-    - Verify if newly created user got list. 
+    - Verify if newly created user got listed. 
 
 ## Step-7: Increase Number of Tasks to 4 in Notification Microservice ECS Service.
 - Increase Number of Tasks to 4 in Notification Microservice ECS Service.
+    - ECS Service Name: svc-notification-microservice-Service-Discovery
 - Verify in AWS Cloud Map about the newly registered Service Instances for Notification Microservice. 
 
 ## Step-8: Additional Observations
 - Now the request from User Management Microservice to Notification Microservice is local to VPC and not via internet.
 - In this approach we really dont see Elastic load balancing.
 - One service will call other service with service name and those service names are DNS registered in private DNS hosted zone with record set.
-- Example: If we have 3 notification service containers 
+- **Example:** If we have 3 notification service containers 
     - 3 private IP addresses we will have for those 3 containers
-    - 3 recordsets (A Records) will be created in Route53 with name "notification.appserices.local"
+    - 3 recordsets (A Records) will be created in Route53 with name "notification.microservices.local"
 - This is achieved using **Route53 Multivalue Routing Policy**. 
-- **Conclusion:**  In short, Service load balancing happens using Route53 multivalue routing policy. Its not as effective or substitute as Elastic Load balancing but it will do the job for RESTful API's which are stateless.
+- **Conclusion:**  
+    - In short, Service load balancing happens using Route53 multivalue routing policy. 
+    - Its not a substitute for Elastic Load balancing but it will do the job for RESTful API's which are stateless.
+    - In addition, with **Service Discovery** there is no special proxy like load balancer in between two microservices, so no additional network hop which means very good performance improvement using Service Discovery. 
 - For additional reference about **Route53 Multivalue Routing Policy** refer below link.
 - Documentation Reference: https://aws.amazon.com/premiumsupport/knowledge-center/multivalue-versus-simple-policies/
