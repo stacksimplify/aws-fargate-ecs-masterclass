@@ -136,6 +136,7 @@ AWS_MAIL_SERVER_FROM_ADDRESS= use-a-valid-email@gmail.com
         - Inbound Port 8095 and 8096 (for both notification & usermanagement service)
         - Notification Service uses Port 8096
         - User Management Service uses port 8095
+    - AutoAssign Public IP: Enabled                
     - Health Check Grace Period: 147
     - **Load Balancing**
         - Load Balancer Type: Application Load Balancer
@@ -200,6 +201,7 @@ http://services.stacksimplify.com/notification/health-status
     - Security Groups: ecs-microservices-inbound (already configured during notification service)
         - Allow traffic from ALB security group or anywhere
         - Inbound Port 8095 and 8096 (for both notification & usermanagement service)
+    - AutoAssign Public IP: Enabled                
     - Health Check Grace Period: 147
     - **Load Balancing**
         - Load Balancer Type: Application Load Balancer
