@@ -9,6 +9,7 @@
 ## Step-2: AWS CloudMap - Create Namespace
 - Introduction to AWS CloudMap
 - Create Simple AWS Cloud Map to just go through the console and delete it. 
+-  For introduction slides refer the [presentation slides](/otherfiles/presentations/AWS-FargateECS-Masterclass-Course.pdf). 
 
 ## Step-3: Notification Microservice - Create Service
 - **Configure Service**
