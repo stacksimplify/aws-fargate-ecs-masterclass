@@ -63,7 +63,7 @@
 - Verify in AWS Cloud Map about the newly registered Service Instances for Notification Microservice. 
 
 ## Step-8: Additional Observations
-- Now the request from User Management Microservice to Notification Microservice is local to VPC and not via internet.
+- Now the request from User Management Microservice to Notification Microservice is local to VPC and not via internet or using any private internal load balancer.
 - In this approach we really dont see Elastic load balancing.
 - One service will call other service with service name and those service names are DNS registered in private DNS hosted zone with record set.
 - **Example:** If we have 3 notification service containers 
