@@ -1,4 +1,4 @@
-# Service Discovery
+# Microservices - Service Discovery
 
 ## Step-1: What are we going to learn?
 - We are going to enable the service discovery for Notificaiton Microservice.
