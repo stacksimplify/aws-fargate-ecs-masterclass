@@ -44,7 +44,7 @@
 - Update User Management Microservice Task definition, respective container definition environment variables of Notificaiton service host and port. 
 - **Configure Container Definition**
     - **Environment Variables**
-        - NOTIFICATION_SERVICE_HOST=notification-service.temp.local
+        - NOTIFICATION_SERVICE_HOST=notification-service.microservices.local
         - NOTIFICATION_SERVICE_PORT=8096
 
 ## Step-5: User Management Microservice - Update Service
