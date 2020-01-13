@@ -75,4 +75,4 @@
     - Its not a substitute for Elastic Load balancing but it will do the job for RESTful API's which are stateless.
     - In addition, with **Service Discovery** there is no special proxy like load balancer in between two microservices, so no additional network hop which means very good performance improvement using Service Discovery. 
 - For additional reference about **Route53 Multivalue Routing Policy** refer below link.
-- Documentation Reference: https://aws.amazon.com/premiumsupport/knowledge-center/multivalue-versus-simple-policies/
+- **Documentation Reference:** https://aws.amazon.com/premiumsupport/knowledge-center/multivalue-versus-simple-policies/
