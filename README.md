@@ -1,6 +1,6 @@
 # AWS Fargate & ECS (Elastic Container Service) - Masterclass
 
-## AWS Services - Covered
+## AWS Services - Covered as part of this course
 1. AWS ECS Service
 2. AWS Fargate Service
 3. AWS Elastic Container Registry - ECR
