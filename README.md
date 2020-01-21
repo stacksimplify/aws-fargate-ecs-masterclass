@@ -1,19 +1,20 @@
 # AWS Fargate & ECS (Elastic Container Service) - Masterclass
 
 ## AWS Services - Covered
-01. AWS ECS Service
-02. AWS Fargate Service
-03. AWS Elastic Container Registry - ECR
-04. AWS Elastic Load Balancer
-05. AWS CloudWatch
-06. AWS CodeCommit
-07. AWS CodeBuild
-08. AWS CodePipeline
-09. AWS Cloud Map
-10. AWS App Mesh
-11. AWS X-Ray
-12. AWS CloudFormation
-13. AWS VPC
+1. AWS ECS Service
+2. AWS Fargate Service
+3. AWS Elastic Container Registry - ECR
+4. AWS Elastic Load Balancer
+5. AWS CloudWatch
+6. AWS VPC
+7. AWS CodeCommit
+8. AWS CodeBuild
+9. AWS CodePipeline
+10. AWS Cloud Map
+11. AWS App Mesh
+12. AWS X-Ray
+13. AWS CloudFormation
+
 
 
 
