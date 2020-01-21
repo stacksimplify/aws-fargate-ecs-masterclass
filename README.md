@@ -13,7 +13,8 @@
 10. AWS Cloud Map
 11. AWS App Mesh
 12. AWS X-Ray
-13. AWS CloudFormation
+13. AWS Simple Email Service - SES
+14. AWS CloudFormation
 
 
 
