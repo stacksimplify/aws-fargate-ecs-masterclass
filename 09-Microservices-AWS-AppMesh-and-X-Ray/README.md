@@ -1,8 +1,10 @@
 # Microservices with AWS AppMesh
 
 ## Step-1: What are we going to learn? 
-
-
+- We are going to deploy Microservices with AWS AppMesh
+- We are going to test microservices communication using AppMesh (Envoy Proxy)
+- We are going to understand how we are going to communicate with external services like RDS Database, SES Service when AppMesh in place (Egress Traffic handling with ECS and AppMesh)
+- We are going to learn how the **Distributed Tracing using AWS X-Ray** can be enabled out of the box when AWS App Mesh is in action without making any code changes to application.
 
 
 ## Step-2: User Management Microservice - Create Service with Service Discovery enabled
