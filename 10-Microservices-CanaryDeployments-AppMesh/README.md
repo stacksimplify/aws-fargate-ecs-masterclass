@@ -10,7 +10,7 @@
 - **Virtual Node:**
     - Virtual Node Name:notification-vnode-appv2
     - Service Discovery Method: DNS
-    - DNS Hostname: notification-service-appv2.microservices.local
+    - DNS Hostname: notification-service-appv2.stacksimplify-dev.com
     - Backend: Nothing
     - Health Status: Nothing
     - Listener Port: 8096 Protocol: HTTP
@@ -21,13 +21,15 @@
 
 ### 2.3: Update AppMesh settings in Task Definition 
 - Remove Envoy container and add it again
-- Envoy 
+- **Service Integration**
+    - Enable App Mesh Integration: Checked
     - Service Integration
         - Virtual Node Name: notification-vnode-appv2
-    - Proxy Congigurations
-        - Egress ignored Ports: 587 **VERY IMPORTANT for MYSQL COMMUNICATION**
+- **Envoy Container Special Settings**
     - ENVOY_LOG_LEVEL: trace
     - ENABLE_ENVOY_XRAY_TRACING: 1
+- **Proxy Congigurations**
+    - Egress ignored Ports: 587 **VERY IMPORTANT for SES COMMUNICATION**
 
 ### 2.4: Create ECS Service for V2 Notification Microservice
 ## Step-1: Notification Microservice - Create Service with Service Discovery enabled
@@ -36,25 +38,27 @@
     - Task Definition:
         - Family: notification-microservice-td
         - Version: (latest) 
-    - Service Name: notification-service-appv2
+    - Service Name: appmesh-notification-appv2
     - Number of Tasks: 1
 - **Configure Network**
     - VPC: ecs-vpc
-    - Subnets: us-east-1a, us-east-1b
-    - Security Groups: ecs-notificaiton-microservice-ServiceDiscovery-Inbound 
+    - Subnets: ap-south-1a, ap-south-1b
+    - Security Groups: appmesh-ecs-inbound 
+        - Inbound Ports 8096, 8095    
     - AutoAssign Public IP: Enabled        
-    - **Load Balancing**
-        - Load Balancer Type: None
-        - **Important Note:** As we are using Service Discovery DNS name for Notification Service, this service doesnt need load balancing via ALB. 
-    - **Service Discovery**
-        - Enable service discovery integration: Checked
-        - Namespace: create new private name space 
-        - Namespace Name: microservices.local
-        - Configure service discovery service: Create new service discovery service
-        - Service discovery name: notification-service-appv2
-        - Enable ECS task health propagation: checked
-        - Rest all defaults
+- **Load Balancing**
+    - Load Balancer Type: None
+    - **Important Note:** As we are using Service Discovery DNS name for Notification Service, this service doesnt need load balancing via ALB. 
+- **Service Discovery**
+    - Enable service discovery integration: Checked
+    - Namespace: create new private name space 
+    - Namespace Name: stacksimplify-dev.com
+    - Configure service discovery service: Create new service discovery service
+    - Service discovery name: notification-service-appv2
+    - Enable ECS task health propagation: checked
+    - Rest all defaults
 - Verify in AWS Cloud Map about the newly created Namespace, Service and registered Service Instance for Notification Microservice. 
+
 
 ## Step-3: AppMesh - Create Virtual Router
 - Name: notification-vrouter
@@ -68,7 +72,7 @@
         - notification-vnode-appv2: Weight 50%
 
 ## Step-4: AppMesh - Update Virtual Service
-- Change the "notification-service.microservices.local" virtual service from Virtual Node to Virtual Router. 
+- Change the "notification-service.stacksimplify-dev.com" virtual service from Virtual Node to Virtual Router. 
 
 ## Step-5: Testing Canary Deployment
 - Access the Notification Info API via User Management API.
