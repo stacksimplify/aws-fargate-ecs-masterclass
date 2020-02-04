@@ -134,7 +134,7 @@
 - Navigate to IAM and update this role by attaching below listed policy
     - **Policy Name:** AWSXRayDaemonWriteAccess
 
-## Step-10: Task Definition Update: Notification Microservice
+## Step-10: Task Definition Update: Notification Microservice to Enable AppMesh & X-Ray
 - **X-Ray Container**
     - Container Name: xray-daemon
     - Image: amazon/aws-xray-daemon:1
@@ -150,7 +150,7 @@
     - **Reference-1:** https://github.com/aws/aws-app-mesh-roadmap/issues/62
     - **Reference-2:** https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ProxyConfiguration.html
 
-## Step-11: Task Definition Update: User Management Microservice
+## Step-11: Task Definition Update: User Management Microservice to Enable AppMesh & X-Ray
 - **X-Ray Container**
     - Container Name: xray-daemon
     - Image: amazon/aws-xray-daemon:1
@@ -166,10 +166,10 @@
     - **Reference-1:** https://github.com/aws/aws-app-mesh-roadmap/issues/62
     - **Reference-2:** https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ProxyConfiguration.html
 
-## Step-12: Update User Management Service with new Task Definition version
+## Step-12: Update User Management Service with new Task Definition version (AppMesh Enablement)
 - Service Name: appmesh-usermanagement
 
-## Step-13: Update Notification Service with new Task Definition version
+## Step-13: Update Notification Service with new Task Definition version (AppMesh Enablement)
 - Service Name: appmesh-notification
 
 ## Step-14: Testing using Postman
