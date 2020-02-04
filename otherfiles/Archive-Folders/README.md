@@ -24,3 +24,7 @@
 | Simple SpringBoot HelloWorld | stacksimplify/dockerintro-springboot-helloworld-rest-api:1.0.0-RELEASE |
 | Full Stack backend - SpringBoot REST Api with MySQL| stacksimplify/aws-usermgmt-restapi-mysql:1.0.0 |
 | Full Stack Frontend - ReactJs  | stacksimplify/usermgmt-frontend:1.0.0 |
+
+
+## App Mesh Egress Ignored Ports
+-  https://github.com/aws/aws-app-mesh-roadmap/issues/62
