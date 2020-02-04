@@ -94,7 +94,7 @@
     - Name: microservices-mesh
     - **Egress filter:** Allow External Traffic
 - **Microservices Service Discovery Names**
-    - **User Management Service:** usermgmt-service.stacksimplify-dev.com
+    - **User Management Service:** usermanagement-service.stacksimplify-dev.com
     - **Notification Service:** notification-service.stacksimplify-dev.com
 
 ## Step-6: Notification Microservice - Create Virtual Node & Virtual Service
