@@ -13,7 +13,7 @@
     - Security Group: microservices-sg-alb (Inbound: Port 80)
     - Target Group: temp-tg-microappmesh (Rest all defaults)
 - **DNS register the LB URL** with a custom domain name something like "appmesh.stacksimplify.com" in Route53. 
-    - Gather the DNS Name of "microservices-alb"
+    - Gather the DNS Name of "microservices-appmesh-alb"
     - Create a Record set in Hosted Zone
         - Record Set Name: appmesh.stacksimplify.com
         - Alias: Yes
