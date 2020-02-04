@@ -79,6 +79,14 @@
     - Enable ECS task health propagation: checked
     - Rest all defaults
 - Verify in AWS Cloud Map about the newly created Namespace, Service and registered Service Instance for User Management Microservice. 
+- Update User Management Service Task Definition with Notification Service Discovery name
+    - notification-service.stacksimplify-dev.com
+- Update the **appmesh-usermanagement** with latest task defintion. 
+- **Testing using Postman**
+    - List Users
+    - Delete User
+    - Create User
+    - Notification Info Service
 
 
 ## Step-5: AWS App Mesh: Create Mesh
