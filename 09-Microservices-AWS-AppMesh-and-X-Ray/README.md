@@ -115,13 +115,13 @@
 - **Virtual Node:**
     - Virtual Node Name:usermgmt-vnode
     - Service Discovery Method: DNS
-    - DNS Hostname: usermgmt-service.stacksimplify-dev.com
+    - DNS Hostname: usermanagement-service.stacksimplify-dev.com
     - Backend: Nothing
     - Health Status: Nothing
     - Listener Port: 8095 Protocol: HTTP
     - Health Check: Disabled
 - **Virtual Service:**    
-    - Virtul Service Name: usermgmt-service.stacksimplify-dev.com
+    - Virtul Service Name: usermanagement-service.stacksimplify-dev.com
     - Provider: Virtual Node
     - Virtual Node: usermgmt-vnode
 
