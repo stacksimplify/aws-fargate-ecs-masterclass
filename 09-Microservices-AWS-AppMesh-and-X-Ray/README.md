@@ -1,4 +1,4 @@
-# Microservices with AWS AppMesh
+# Microservices deployment AWS AppMesh & leverage AWS X-Ray for Distributed Tracing
 
 ## Step-1: What are we going to learn? 
 - We are going to deploy Microservices with AWS AppMesh
@@ -35,7 +35,7 @@
 - Verify in AWS Cloud Map about the newly created Namespace, Service and registered Service Instance for User Management Microservice. 
 
 
-## Step-3: AWS App Mesh
+## Step-3: AWS App Mesh: Create Mesh
 - Create Mesh
     - Name: microservices-mesh
     - **Egress filter:** Allow External Traffic
