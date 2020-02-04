@@ -5,8 +5,7 @@
 - We will split the traffic with 50% each between V1 and V2 version of notification service and test. 
 - Monitor the X-Ray console.
 
-## Step-2: Notification Microservice - V2 version Deployment
-### 2.1: Create a Virtual Node in AppMesh for V2 Version
+## Step-2: Create a Virtual Node in AppMesh for V2 Version
 - **Virtual Node:**
     - Virtual Node Name:notification-vnode-appv2
     - Service Discovery Method: DNS
@@ -16,10 +15,11 @@
     - Listener Port: 8096 Protocol: HTTP
     - Health Check: Disabled
 
-### 2.2: Update Task Definition with V2 version of Notification Microservice Docker Image
+## Step-3: Update Task Definition Notification Microservice to support V2 version of Application
+### 3.1: Update Docker Image
 - **Docker Image Name:** stacksimplify/notifications-microservice:2.0.0
 
-### 2.3: Update AppMesh settings in Task Definition 
+### 3.2: Update AppMesh settings in Task Definition 
 - Remove Envoy container and add it again
 - **Service Integration**
     - Enable App Mesh Integration: Checked
@@ -31,8 +31,7 @@
 - **Proxy Congigurations**
     - Egress ignored Ports: 587 **VERY IMPORTANT for SES COMMUNICATION**
 
-### 2.4: Create ECS Service for V2 Notification Microservice
-## Step-1: Notification Microservice - Create Service with Service Discovery enabled
+## Step-4: Create ECS Service for V2 Notification Microservice
 - **Configure Service**
     - Launch Type: Fargate
     - Task Definition:
@@ -59,8 +58,7 @@
     - Rest all defaults
 - Verify in AWS Cloud Map about the newly created Namespace, Service and registered Service Instance for Notification Microservice. 
 
-
-## Step-3: AppMesh - Create Virtual Router
+## Step-5: AppMesh - Create Virtual Router
 - Name: notification-vrouter
 - Listerner: 8096 Protocol: HTTP
 - **Edit Router to add Routes**
@@ -71,10 +69,10 @@
         - notification-vnode: Weight 50%
         - notification-vnode-appv2: Weight 50%
 
-## Step-4: AppMesh - Update Virtual Service
+## Step-6: AppMesh - Update Virtual Service
 - Change the "notification-service.stacksimplify-dev.com" virtual service from Virtual Node to Virtual Router. 
 
-## Step-5: Testing Canary Deployment
+## Step-7: Testing Canary Deployment
 - Access the Notification Info API via User Management API.
 - Verify the X-Ray console.
 ```
