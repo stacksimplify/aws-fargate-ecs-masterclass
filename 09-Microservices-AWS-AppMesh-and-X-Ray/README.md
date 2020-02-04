@@ -1,4 +1,4 @@
-# Microservices deployment AWS AppMesh & leverage AWS X-Ray for Distributed Tracing
+# Microservices deployment with AWS AppMesh & leverage AWS X-Ray for Distributed Tracing
 
 ## Step-1: What are we going to learn? 
 - We are going to deploy Microservices with AWS AppMesh
