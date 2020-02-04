@@ -82,7 +82,7 @@
 
 
 ## Step-5: AWS App Mesh: Create Mesh
-- Create Mesh
+- **Create Mesh**
     - Name: microservices-mesh
     - **Egress filter:** Allow External Traffic
 - **Microservices Service Discovery Names**
