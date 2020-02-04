@@ -35,10 +35,11 @@
 
 ## Step-3: AWS App Mesh
 - Create Mesh
-- Egress filter: Allow External Traffic
+    - Name: microservices-mesh
+    - **Egress filter:** Allow External Traffic
 - **Microservices Service Discovery Names**
-- **User Management Service:** usermgmt-service.microservices.local
-- **Notification Service:** notification-service.microservices.local
+    - **User Management Service:** usermgmt-service.microservices.local
+    - **Notification Service:** notification-service.microservices.local
 
 ## Step-4: Notification Microservice - Create Virtual Node & Virtual Service
 - **Virtual Node:**
