@@ -41,7 +41,7 @@
     - Namespace: create new private name space 
     - Namespace Name: stacksimplify-dev.com
     - Configure service discovery service: Create new service discovery service
-    - Service discovery name: usermanagement-service
+    - Service discovery name: notification-service
     - Enable ECS task health propagation: checked
     - Rest all defaults
 - Verify in AWS Cloud Map about the newly created Namespace, Service and registered Service Instance for Notification Microservice. 
