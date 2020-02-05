@@ -5,7 +5,7 @@
 - We will split the traffic with 50% each between V1 and V2 version of notification service and test. 
 - Monitor the X-Ray console.
 
-## Step-2: Create a Virtual Node in AppMesh for V2 Version
+## Step-2: Create a Virtual Node in AppMesh for V2 Version of Notification Service
 - **Virtual Node:**
     - Virtual Node Name:notification-vnode-appv2
     - Service Discovery Method: DNS
