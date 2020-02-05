@@ -84,3 +84,8 @@
 ```
 http://<ALB-URL>/usermgmt/notification-service-info
 ```
+
+## Step-8: Clean Up Resources for cost saving
+- Update ECS Services (Notification, User Management) **Number of Tasks** to 0
+- Stop RDS Database. 
+- If we really dont need these resources (RDS & ALB), you can even delete the RDS database and ALB. 
