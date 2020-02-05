@@ -16,10 +16,16 @@
     - Health Check: Disabled
 
 ## Step-3: Update Task Definition Notification Microservice to support V2 version of Application
-### 3.1: Update Docker Image
+### 3.1: Discuss about Notification Microservice V2 Version
+- Updated some static text in notificaiton info service which will be accessed from User Management Microservice. 
+- Review those changes on Spring STS IDE
+- Verify the docker image for V2 notification **stacksimplify/notifications-microservice:2.0.0** on Docker Hub. 
+- We are good to proceed with implementation after above checks. 
+
+### 3.2: Update Docker Image
 - **Docker Image Name:** stacksimplify/notifications-microservice:2.0.0
 
-### 3.2: Update AppMesh settings in Task Definition 
+### 3.3: Update AppMesh settings in Task Definition 
 - Remove Envoy container and add it again
 - **Service Integration**
     - Enable App Mesh Integration: Checked
