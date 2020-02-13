@@ -24,7 +24,7 @@
     - 01-03-Fargate-NetworkStack-Create-SecurityGroups-LoadBalancers.yml
     - 01-04-Fargate-NetworkStack-Create-Outputs.yml
 
-## Step-02: Create Service Stack
+## Step-02: Create Fargate Service Stack
 - We are going to build the network stack in a incremental manner.     
     - 02-01-Fargate-ServiceStack-Create-InputParameters.yml
     - 02-02-Fargate-ServiceStack-Create-TaskDefinition.yml
