@@ -1,5 +1,9 @@
 # Cloud Formation Templates for Deploying Fargate Tasks in a VPC on a Public Subnet.
 
+## What are we going to build using CloudFormation Templates?
+
+<img src="https://github.com/stacksimplify/aws-fargate-ecs-masterclass/blob/master/otherfiles/images/11-ecs-cfn-public-vpc-public-subnet.png" width="1600" height="500">
+
 ## Step-00: Template Categories
 - We are going to divide templates in to two categories
 - **Network Stack (Parent Stack)**
@@ -26,6 +30,3 @@
     - 02-02-Fargate-ServiceStack-Create-TaskDefinition.yml
     - 02-03-Fargate-ServiceStack-Create-ALB-TargetGroup-and-LoadBalancerRule.yml
     - 02-04-Fargate-ServiceStack-Create-ECSService.yml
-
-
-<img src="https://github.com/stacksimplify/aws-fargate-ecs-masterclass/blob/master/otherfiles/images/11-ecs-cfn-public-vpc-public-subnet.png" width="1600" height="500">
