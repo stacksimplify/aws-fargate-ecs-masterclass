@@ -7,7 +7,7 @@
     - Create ECS Cluster & ECS Roles
     - Create Load Balancer (ALB)
     - Create Outputs
-- **Service Stack**
+- **Faragte Service Stack**
     - Create Input Parameters
     - Create Task Definition
     - Create Load Balancer Target Group & Load Balancer Rule
