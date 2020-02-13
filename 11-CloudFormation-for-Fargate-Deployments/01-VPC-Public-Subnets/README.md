@@ -13,7 +13,7 @@
     - Create Load Balancer Target Group & Load Balancer Rule
     - Create ECS Service
 
-## Step-01: Create Network Stack
+## Step-01: Create Network Stack (Parent Stack)
 - We are going to build the network stack in a incremental manner.     
     - 01-01-Fargate-NetworkStack-CreateVPC.yml
     - 01-02-Fargate-NetworkStack-Create-ECSCluster-ECSRoles.yml
