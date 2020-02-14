@@ -1,17 +1,16 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Deploy a service on AWS Fargate, hosted in a public subnet, and accessible via a public load balancer.
+Description: Deploy a service on AWS Fargate, hosted in a public subnet of a VPC, and accessible via a public load balancer
 
-# Input Parameters
+# Input Paramters
 Parameters:
-  StackName:
+  StackName: 
     Type: String
-    Default: production
-    Description: The name of the parent Fargate networking stack that you created. Necessary
-                 to locate and reference resources created by that stack.
+    Default: Fargate-Network-Stack
+    Description: The name of the parent fargate networking stack
   ServiceName:
     Type: String
     Default: nginx
-    Description: A name for the service
+    Description: Name of the ECS service
   ImageUrl:
     Type: String
     Default: nginx

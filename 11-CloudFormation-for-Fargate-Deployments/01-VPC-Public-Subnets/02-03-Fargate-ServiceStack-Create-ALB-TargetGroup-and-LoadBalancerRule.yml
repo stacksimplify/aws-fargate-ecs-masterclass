@@ -1,17 +1,16 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Deploy a service on AWS Fargate, hosted in a public subnet, and accessible via a public load balancer.
+Description: Deploy a service on AWS Fargate, hosted in a public subnet of a VPC, and accessible via a public load balancer
 
-# Input Parameters
+# Input Paramters
 Parameters:
-  StackName:
+  StackName: 
     Type: String
-    Default: production
-    Description: The name of the parent Fargate networking stack that you created. Necessary
-                 to locate and reference resources created by that stack.
+    Default: Fargate-Network-Stack
+    Description: The name of the parent fargate networking stack
   ServiceName:
     Type: String
     Default: nginx
-    Description: A name for the service
+    Description: Name of the ECS service
   ImageUrl:
     Type: String
     Default: nginx
@@ -51,70 +50,63 @@ Parameters:
     Description: (Optional) An IAM role to give the service's containers if the code within needs to
                  access other AWS resources like S3 buckets, DynamoDB tables, etc
 
-Conditions:
-  HasCustomRole: !Not [ !Equals [!Ref 'Role', ''] ]
+Conditions: 
+  HasCustomRole: !Not [!Equals [!Ref 'Role', '']]                 
 
-Resources:
-  # The task definition. This is a simple metadata description of what
-  # container to run, and what resource requirements it has.
+Resources: 
   TaskDefinition:
-    Type: AWS::ECS::TaskDefinition
-    Properties:
+    Type: AWS::ECS::TaskDefinition 
+    Properties: 
       Family: !Ref 'ServiceName'
       Cpu: !Ref 'ContainerCpu'
       Memory: !Ref 'ContainerMemory'
       NetworkMode: awsvpc
-      RequiresCompatibilities:
-        - FARGATE
+      RequiresCompatibilities: 
+        - FARGATE 
       ExecutionRoleArn:
-        Fn::ImportValue:
-          !Join [':', [!Ref 'StackName', 'ECSTaskExecutionRole']]
+        Fn::ImportValue: 
+          !Join [':', [!Ref 'StackName', 'ECSTaskExecutionRole']]  
       TaskRoleArn:
-        Fn::If:
-          - 'HasCustomRole'
+        Fn::If: 
+          - 'HasCustomRole' 
           - !Ref 'Role'
-          - !Ref "AWS::NoValue"
+          - !Ref "AWS::NoValue"         
       ContainerDefinitions:
         - Name: !Ref 'ServiceName'
           Cpu: !Ref 'ContainerCpu'
           Memory: !Ref 'ContainerMemory'
           Image: !Ref 'ImageUrl'
-          PortMappings:
-            - ContainerPort: !Ref 'ContainerPort'
+          PortMappings: 
+            - ContainerPort: !Ref 'ContainerPort'      
 
-  # A target group. This is used for keeping track of all the tasks, and
-  # what IP addresses / port numbers they have. You can query it yourself,
-  # to use the addresses yourself, but most often this target group is just
-  # connected to an application load balancer, or network load balancer, so
-  # it can automatically distribute traffic across all the targets.
   TargetGroup:
-    Type: AWS::ElasticLoadBalancingV2::TargetGroup
-    Properties:
-      HealthCheckIntervalSeconds: 6
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup 
+    Properties: 
+      HeatlhCheckIntervalSeconds: 6
       HealthCheckPath: /
-      HealthCheckProtocol: HTTP
+      HealthCheckProtocol: HTTP 
       HealthCheckTimeoutSeconds: 5
-      HealthyThresholdCount: 2
-      TargetType: ip
+      HealthCheckThresholdCount: 2
+      TargetType: ip 
       Name: !Ref 'ServiceName'
       Port: !Ref 'ContainerPort'
-      Protocol: HTTP
-      UnhealthyThresholdCount: 2
-      VpcId:
+      Protocol: HTTP 
+      UnHealthyThresholdCount: 2
+      VpcId:                     
         Fn::ImportValue:
           !Join [':', [!Ref 'StackName', 'VPCId']]
 
-  # Create a rule on the load balancer for routing traffic to the target group
   LoadBalancerRule:
     Type: AWS::ElasticLoadBalancingV2::ListenerRule
     Properties:
       Actions:
-        - TargetGroupArn: !Ref 'TargetGroup'
+        - TargetGroupArn: !Ref 'TargetGroup'       
           Type: 'forward'
       Conditions:
         - Field: path-pattern
-          Values: [!Ref 'Path']
-      ListenerArn:
+          Values: [!Ref 'path']       
+      ListenerArn: 
         Fn::ImportValue:
-          !Join [':', [!Ref 'StackName', 'PublicListener']]
-      Priority: !Ref 'Priority'
+          !Join [':', [!Ref 'StackName', 'PublicListener']] 
+      Priority: !Ref 'Priority'                         
+      

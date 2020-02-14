@@ -30,3 +30,6 @@
     - 02-02-Fargate-ServiceStack-Create-TaskDefinition.yml
     - 02-03-Fargate-ServiceStack-Create-ALB-TargetGroup-and-LoadBalancerRule.yml
     - 02-04-Fargate-ServiceStack-Create-ECSService.yml
+
+## Step-03: Clean-Up
+- Delete CloudFormation Stacks 

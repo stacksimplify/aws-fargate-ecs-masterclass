@@ -1,82 +1,83 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Create a network stack with a public VPC, Fargate Cluster and Load balancer as a Parent Stack.
+Description: Create a network stack with a public vpc, fargate cluster and load balancer as a parent stack. 
 
-Mappings:
+Mappings: 
   SubnetConfig:
     VPC:
       CIDR: '10.0.0.0/16'
     PublicOne:
       CIDR: '10.0.0.0/24'
     PublicTwo:
-      CIDR: '10.0.1.0/24'
+      CIDR: '10.0.1.0/24'  
 
-Resources:
+Resources: 
   FargateVpc:
     Type: AWS::EC2::VPC
     Properties:
       EnableDnsSupport: true
       EnableDnsHostnames: true
-      CidrBlock: !FindInMap ['SubnetConfig', 'VPC', 'CIDR']
-
+      CidrBlock: !FindInMap ['SubnetConfig', 'VPC', 'CIDR']      
+  
   PublicSubnetOne:
     Type: AWS::EC2::Subnet
     Properties:
-      AvailabilityZone:
-         Fn::Select:
-         - 0
-         - Fn::GetAZs: {Ref: 'AWS::Region'}
-      VpcId: !Ref 'FargateVpc'
+      AvailabilityZone: 
+        Fn::Select:
+        - 0
+        - Fn::GetAZs: {Ref: 'AWS::Region'}   
+      VpcId: !Ref FargateVpc      
       CidrBlock: !FindInMap ['SubnetConfig', 'PublicOne', 'CIDR']
       MapPublicIpOnLaunch: true
-
+  
   PublicSubnetTwo:
     Type: AWS::EC2::Subnet
     Properties:
-      AvailabilityZone:
-         Fn::Select:
-         - 1
-         - Fn::GetAZs: {Ref: 'AWS::Region'}
-      VpcId: !Ref 'FargateVpc'
+      AvailabilityZone: 
+        Fn::Select:
+        - 1
+        - Fn::GetAZs: {Ref: 'AWS::Region'}   
+      VpcId: !Ref FargateVpc      
       CidrBlock: !FindInMap ['SubnetConfig', 'PublicTwo', 'CIDR']
-      MapPublicIpOnLaunch: true
+      MapPublicIpOnLaunch: true      
 
   InternetGateway:
-    Type: AWS::EC2::InternetGateway
-
-  GatewayAttachement:
-    Type: AWS::EC2::VPCGatewayAttachment
+    Type: AWS::EC2::InternetGateway 
+  
+  GatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment 
     Properties:
-      VpcId: !Ref 'FargateVpc'
-      InternetGatewayId: !Ref 'InternetGateway'
+      VpcId: !Ref FargateVpc
+      InternetGatewayId: !Ref InternetGateway
 
   PublicRouteTable:
     Type: AWS::EC2::RouteTable
     Properties:
-      VpcId: !Ref 'FargateVpc'
-
+      VpcId: !Ref FargateVpc 
+      
   PublicRoute:
-    Type: AWS::EC2::Route
-    DependsOn: GatewayAttachement
+    Type: AWS::EC2::Route 
     Properties:
-      RouteTableId: !Ref 'PublicRouteTable'
-      DestinationCidrBlock: '0.0.0.0/0'
-      GatewayId: !Ref 'InternetGateway'
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: '0.0.0.0/0' 
+      GatewayId: !Ref InternetGateway  
 
   PublicSubnetOneRouteTableAssociation:
-    Type: AWS::EC2::SubnetRouteTableAssociation
+    Type: AWS::EC2::SubnetRouteTableAssociation 
     Properties:
       SubnetId: !Ref PublicSubnetOne
-      RouteTableId: !Ref PublicRouteTable
-      
+      RouteTableId: !Ref PublicRouteTable    
+
   PublicSubnetTwoRouteTableAssociation:
-    Type: AWS::EC2::SubnetRouteTableAssociation
+    Type: AWS::EC2::SubnetRouteTableAssociation 
     Properties:
       SubnetId: !Ref PublicSubnetTwo
-      RouteTableId: !Ref PublicRouteTable
+      RouteTableId: !Ref PublicRouteTable          
 
-# Create ECS Cluster
+# ECS Cluster
   ECSCluster:
     Type: AWS::ECS::Cluster
+
+# ECS Roles
 
 # ECS Roles    
 # This role is used by the ECS tasks themselves.
@@ -107,7 +108,7 @@ Resources:
                 - 'logs:PutLogEvents'
               Resource: '*'    
 
-# This is an IAM role which authorizes ECS to manage resources on our
+  # This is an IAM role which authorizes ECS to manage resources on our
   # account on our behalf, such as updating our load balancer with the
   # details of where our containers are, so that traffic can reach your
   # containers.

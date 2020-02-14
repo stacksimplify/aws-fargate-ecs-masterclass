@@ -1,5 +1,4 @@
 
-
 # ECS Roles    
 # This role is used by the ECS tasks themselves.
   ECSTaskExecutionRole:
