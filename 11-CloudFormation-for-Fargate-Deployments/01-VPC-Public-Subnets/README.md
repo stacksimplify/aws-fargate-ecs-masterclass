@@ -33,3 +33,5 @@
 
 ## Step-03: Clean-Up
 - Delete CloudFormation Stacks 
+    - First delete Service Stack
+    - Next delete the Network Stack ( Network stack resources are used in Service Stack - Always recommended to delete parent stacks at the end.)
