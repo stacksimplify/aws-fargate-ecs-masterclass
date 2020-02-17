@@ -29,7 +29,29 @@
 13. AWS Simple Email Service - SES
 14. AWS CloudFormation
 
+## What will students learn in your course?
+- You will slowly start by learning Docker Fundamentals and move on to ECS or Fargate. 
+- You will learn Docker fundamentals by implementing usecases like download image from Docker Hub and run on local desktop and build an image locally, test and push to Docker Hub.
+- You will master the Elastic Container Service core concepts like Task Definition, Task and Service.
+- You will learn using ECR - Elastic Container Registry in combination with ECS. 
+- You will learn Docker Image Build, Push to ECR, run it as Task on ECS or Fargate Clusters.
+- You will learn usage of Application Load Balancers in combination with ECS Tasks (Containers) and also implement URI based routing on ALB.
+- You will understand and implement Service Autoscaling concepts of ECS
+- You will implement Continuous Integration and Continuous Delivery concepts using AWS Developer Tools like CodeBuild, CodeCommit and CodePipeline.
+- You will learn to master microservices deployments on ECS in combination with AWS CloudMap (for Service Discovery) and with AWS App Mesh (Service Mesh).
+- You will learn to deploy Microservices Canary Deployments using AWS App Mesh.
+- You will write CloudFormation Templates for Fargate Deployments starting from Network stack (VPC) to Service Stack (ECS or Fargate). 
+
+## Are there any course requirements or prerequisites?
+- You must have an AWS account to follow with me for hands-on activities.
+- You dont need to have any basic Docker knowledge also to start this course.  As part of Docker Fundamentals we have covered that too. 
+
+## Who are your target students?
+- AWS Architects or Sysadmins or Developers who are planning to master Elastic Container Service (ECS) for Docker deployments.
+- Any beginner who is interested in learning Docker fundamentals and moving on to master Docker Container deployments on AWS Cloud. 
+- Technologists who want to implement Continuous Integration and Continuos Delivery/Deployment process (CI/CD) in AWS with Docker Container Images.
 
 
+## Course Overview
 
 
