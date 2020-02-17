@@ -41,6 +41,7 @@
 - You will learn to master microservices deployments on ECS in combination with AWS CloudMap (for Service Discovery) and with AWS App Mesh (Service Mesh).
 - You will learn to deploy Microservices Canary Deployments using AWS App Mesh.
 - You will write CloudFormation Templates for Fargate Deployments starting from Network stack (VPC) to Service Stack (ECS or Fargate). 
+- You will learn to implement Distributed Tracing using X-Ray without making any application level code changes when AWS App Mesh (Envoy Proxy) is in place with ECS Deployments.
 
 ## Are there any course requirements or prerequisites?
 - You must have an AWS account to follow with me for hands-on activities.
@@ -51,7 +52,15 @@
 - Any beginner who is interested in learning Docker fundamentals and moving on to master Docker Container deployments on AWS Cloud. 
 - Technologists who want to implement Continuous Integration and Continuos Delivery/Deployment process (CI/CD) in AWS with Docker Container Images.
 
+## Each of my courses come with
+- Amazing Hands-on Step By Step Learning Experiences
+- Real Implementation Experience
+- Friendly Support in the Q&A section
+- 30 Day "No Questions Asked" Money Back Guarantee!
 
-## Course Overview
+## My Other AWS Courses
+- [Udemy Enroll](https://github.com/stacksimplify/udemy-enroll)
 
+## Stack Simplify Udemy Profile
+- [Udemy Profile](https://www.udemy.com/user/kalyan-reddy-9/)
 
