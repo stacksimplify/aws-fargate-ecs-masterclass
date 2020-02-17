@@ -1,6 +1,8 @@
 # AWS Fargate & ECS (Elastic Container Service) - Masterclass
 
-## Course Outline
+Welcome to this Amazing course on **AWS Fargate & ECS - Masterclass | Microservices, Docker, CloudFormation**.Below is the list of modules covered in this course. 
+
+## Course Modules
 1. Fargate & ECS - First Steps
 2. Docker Fundamentals
 3. Fargate and ECS Fundamentals
