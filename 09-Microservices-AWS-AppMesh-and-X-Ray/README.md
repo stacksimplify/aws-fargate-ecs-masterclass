@@ -46,6 +46,17 @@
     - Rest all defaults
 - Verify in AWS Cloud Map about the newly created Namespace, Service and registered Service Instance for Notification Microservice. 
 
+## Important Note: Before moving to User Management Service
+- In Step-3, during the notification service creation we have created a new Security Group for ECS named **appmesh-ecs-inbound**.  We need to ensure that traffic from this security group is allowed on RDS Database. 
+- User Management Service when depployed it first checks the connectivity to RDS Database and if we dont update RDS Database Security group to allow traffic from **appmesh-ecs-inbound** then we are going to have an issue with UMS Service (It keeps always restarting)
+- Update the RDS Security Group
+    - **Name: microservices-rds-db-sg**
+    - New Rule: 
+        - Type: MYSQL/Aurora
+        - Protocol: TCP
+        - Port Range: 3306
+        - Source: appmesh-ecs-inbound
+        - Description: Allow access from new ECS security group named appmesh-ecs-inbound to RDS Database. 
 
 ## Step-4: User Management Microservice - Create Service with Service Discovery enabled
 - **Configure Service**
