@@ -82,16 +82,16 @@ Resources:
   TargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup 
     Properties: 
-      HeatlhCheckIntervalSeconds: 6
+      HealthCheckIntervalSeconds: 6
       HealthCheckPath: /
       HealthCheckProtocol: HTTP 
       HealthCheckTimeoutSeconds: 5
-      HealthCheckThresholdCount: 2
+      HealthyThresholdCount: 2
       TargetType: ip 
       Name: !Ref 'ServiceName'
       Port: !Ref 'ContainerPort'
       Protocol: HTTP 
-      UnHealthyThresholdCount: 2
+      UnhealthyThresholdCount: 2
       VpcId:                     
         Fn::ImportValue:
           !Join [':', [!Ref 'StackName', 'VPCId']]
@@ -104,7 +104,7 @@ Resources:
           Type: 'forward'
       Conditions:
         - Field: path-pattern
-          Values: [!Ref 'path']       
+          Values: [!Ref 'Path']       
       ListenerArn: 
         Fn::ImportValue:
           !Join [':', [!Ref 'StackName', 'PublicListener']] 
